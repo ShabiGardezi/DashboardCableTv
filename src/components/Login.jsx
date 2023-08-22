@@ -30,6 +30,14 @@ function Login({ setIsLoggedIn }) {
       if (response.status === 200) {
         setIsLoggedIn(true);
         navigate("/dashboard");
+        const data = await response.json();
+        const token = data.token;
+
+        // Store the token securely (e.g., in localStorage)
+        localStorage.setItem("authToken", token);
+
+        // Redirect to the dashboard or another protected route
+        navigate("/dashboard");
 
         // Check if "Remember Me" is checked, and save email and password to local storage
         if (rememberMe) {
@@ -50,10 +58,6 @@ function Login({ setIsLoggedIn }) {
     } catch (error) {
       console.error("Error:", error);
     }
-    const handleSignup = () => {
-      // Navigate to the signup component when the "Signup" button is clicked.
-      navigate("/signup");
-    };
   };
   React.useEffect(() => {
     const rememberedEmail = localStorage.getItem("rememberedEmail");
@@ -134,16 +138,6 @@ function Login({ setIsLoggedIn }) {
             >
               Login
             </Button>
-            <Typography
-              variant="body1"
-              align="center"
-              style={{ marginTop: "8px" }}
-            >
-              Don't have an account?
-              <Link to="/signup" style={{ textDecoration: "none" }}>
-                Sign up
-              </Link>
-            </Typography>
           </form>
         </Grid>
       </Grid>

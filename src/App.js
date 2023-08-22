@@ -17,7 +17,7 @@ function App() {
       {/* <VerticalNavbar /> */}
       <main>
         <Routes>
-          <Route path="/signup" exact Component={SignUp}></Route>
+          {/* <Route path="/signup" exact Component={SignUp}></Route> */}
           <Route path="/pages" exact Component={Pages}></Route>
           <Route path="/zipcode" exact Component={Zipcodes}></Route>
           <Route path="/user" exact Component={User}></Route>
