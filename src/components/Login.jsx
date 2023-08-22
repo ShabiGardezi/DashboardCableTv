@@ -40,6 +40,7 @@ function Login({ setIsLoggedIn }) {
           localStorage.removeItem("rememberedEmail");
           localStorage.removeItem("rememberedPassword");
         }
+        console.log(response.status);
       } else if (response.status === 401) {
         console.log("Wrong email or password");
       } else {

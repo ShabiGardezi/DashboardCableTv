@@ -1,6 +1,5 @@
 import "../styles/SignUp.css";
 import React, { useState } from "react";
-import jwt from "jsonwebtoken"; // Import the jwt library
 import {
   TextField,
   Container,
