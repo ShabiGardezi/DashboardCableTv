@@ -1,5 +1,6 @@
 import "../styles/SignUp.css";
 import React, { useState } from "react";
+import jwt from "jsonwebtoken"; // Import the jwt library
 import {
   TextField,
   Container,
@@ -32,16 +33,14 @@ const SignUp = () => {
     try {
       const { username, email, password, role } = formData;
       const userData = { username, email, password, role };
-      const token = localStorage.getItem("authToken");
+
       const response = await fetch("http://localhost:5000/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Include the token
         },
         body: JSON.stringify(userData),
       });
-
       const data = await response.json();
       console.log(data);
     } catch (error) {
