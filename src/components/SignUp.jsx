@@ -1,13 +1,22 @@
 import "../styles/SignUp.css";
 import React, { useState } from "react";
-import { Button, TextField, Container, Typography, Grid } from "@mui/material";
-import Logo from "../assests/header-Logo.png";
+import {
+  TextField,
+  Container,
+  Typography,
+  Grid,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Button,
+} from "@mui/material";
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    username: "",
     email: "",
     password: "",
+    role: "", // Set a default value for role
   });
 
   const handleChange = (e) => {
@@ -17,36 +26,33 @@ const SignUp = () => {
       [name]: value,
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      const { username, email, password, role } = formData;
+      const userData = { username, email, password, role };
+
       const response = await fetch("http://localhost:5000/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(userData),
       });
-
       const data = await response.json();
       console.log(data);
     } catch (error) {
       console.error("Error:", error);
     }
   };
-
   return (
     <Container maxWidth="xs">
       <Grid container justifyContent="center" alignItems="center" spacing={2}>
-        <Grid item xs={12}>
-          <img src={Logo} alt="Logo" style={{ maxWidth: "100%" }} />
-        </Grid>
         {/* Heading */}
         <Grid item xs={12}>
           <Typography variant="h4" align="center" gutterBottom>
-            Welcome To Shop Satellite TV{" "}
+            Welcome To Shop Satellite TV
           </Typography>
         </Grid>
         {/* Description */}
@@ -54,27 +60,15 @@ const SignUp = () => {
           <Typography variant="h4" align="center" gutterBottom>
             Sign Up
           </Typography>
-          <Typography variant="body1" align="center">
-            Please fill all fields to sign up.
-          </Typography>{" "}
         </Grid>
         <Grid item xs={12}>
           <form onSubmit={handleSubmit}>
             <TextField
-              label="First Name"
+              label="Username"
               fullWidth
               margin="normal"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              label="Last Name"
-              fullWidth
-              margin="normal"
-              name="lastName"
-              value={formData.lastName}
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               required
             />
@@ -98,8 +92,20 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-            <Button variant="contained" color="primary" fullWidth type="submit">
-              Sign Up
+            <FormControl fullWidth margin="normal">
+              <InputLabel>Role</InputLabel>
+              <Select
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+                required
+              >
+                <MenuItem value="user">User</MenuItem>
+                <MenuItem value="admin">Admin</MenuItem>
+              </Select>
+            </FormControl>
+            <Button variant="contained" color="primary" type="submit">
+              Add Now
             </Button>
           </form>
         </Grid>

@@ -19,7 +19,9 @@ function Login({ setIsLoggedIn }) {
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
     try {
       const response = await fetch("http://localhost:5000/api/login", {
         method: "POST",
@@ -42,20 +44,15 @@ function Login({ setIsLoggedIn }) {
           localStorage.removeItem("rememberedEmail");
           localStorage.removeItem("rememberedPassword");
         }
+        console.log(response.status);
       } else if (response.status === 401) {
         console.log("Wrong email or password");
       } else {
         console.log("An error occurred");
       }
-      setIsLoggedIn(true);
-      navigate("/dashboard");
     } catch (error) {
       console.error("Error:", error);
     }
-    const handleSignup = () => {
-      // Navigate to the signup component when the "Signup" button is clicked.
-      navigate("/signup");
-    };
   };
   React.useEffect(() => {
     const rememberedEmail = localStorage.getItem("rememberedEmail");
@@ -66,11 +63,11 @@ function Login({ setIsLoggedIn }) {
       setRememberMe(true);
     }
   }, []);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can handle login logic here, e.g., sending data to the server.
-    // console.log(formData);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // You can handle login logic here, e.g., sending data to the server.
+  //   // console.log(formData);
+  // };
 
   return (
     <Container maxWidth="xs">
@@ -152,6 +149,69 @@ function Login({ setIsLoggedIn }) {
               </Typography> */}
             </form>
           </Grid>
+      <Grid container justifyContent="center" alignItems="center" spacing={2}>
+        {/* Logo */}
+        <Grid item xs={12}>
+          <img src={Logo} alt="Logo" style={{ maxWidth: "100%" }} />
+        </Grid>
+        {/* Heading */}
+        <Grid item xs={12}>
+          <Typography variant="h4" align="center" gutterBottom>
+            Welcome To Shop Satellite TV{" "}
+          </Typography>
+        </Grid>
+        {/* Description */}
+        <Grid item xs={12}>
+          <Typography variant="h4" align="center" gutterBottom>
+            Login In
+          </Typography>
+          <Typography variant="body1" align="center">
+            Please enter your email and password to log in.
+          </Typography>{" "}
+        </Grid>
+        <Grid item xs={12}>
+          <form onSubmit={handleLogin}>
+            <TextField
+              label="Email"
+              fullWidth
+              margin="normal"
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <TextField
+              label="Password"
+              fullWidth
+              margin="normal"
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {/* Remember Me Checkbox */}
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  name="rememberMe"
+                />
+              }
+              label="Remember Me"
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              type="submit"
+              // onClick={handleLogin}
+            >
+              Login
+            </Button>
+          </form>
         </Grid>
       </div>
       <div className="rightside">
