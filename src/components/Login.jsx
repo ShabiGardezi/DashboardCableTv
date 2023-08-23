@@ -17,7 +17,9 @@ function Login({ setIsLoggedIn }) {
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
     try {
       const response = await fetch("http://localhost:5000/api/login", {
         method: "POST",
@@ -46,8 +48,6 @@ function Login({ setIsLoggedIn }) {
       } else {
         console.log("An error occurred");
       }
-      setIsLoggedIn(true);
-      navigate("/dashboard");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -61,11 +61,11 @@ function Login({ setIsLoggedIn }) {
       setRememberMe(true);
     }
   }, []);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can handle login logic here, e.g., sending data to the server.
-    // console.log(formData);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // You can handle login logic here, e.g., sending data to the server.
+  //   // console.log(formData);
+  // };
 
   return (
     <Container maxWidth="xs">
@@ -90,7 +90,7 @@ function Login({ setIsLoggedIn }) {
           </Typography>{" "}
         </Grid>
         <Grid item xs={12}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleLogin}>
             <TextField
               label="Email"
               fullWidth
@@ -127,7 +127,7 @@ function Login({ setIsLoggedIn }) {
               color="primary"
               fullWidth
               type="submit"
-              onClick={handleLogin}
+              // onClick={handleLogin}
             >
               Login
             </Button>
