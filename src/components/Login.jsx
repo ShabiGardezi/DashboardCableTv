@@ -74,12 +74,11 @@ function Login({ setIsLoggedIn }) {
       <div className="leftside">
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
           {/* Logo */}
-          <div className="logo">
-            <Grid item xs={12}>
+          <Grid item xs={12}>
+            <div className="logo">
               <img src={Logo} alt="Logo" style={{ maxWidth: "100%" }} />
-            </Grid>
-          </div>
-
+            </div>
+          </Grid>
           {/* Heading */}
           <Grid item xs={12}>
             <Typography variant="h4" align="center" gutterBottom>
@@ -96,7 +95,7 @@ function Login({ setIsLoggedIn }) {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
               <TextField
                 label="Email"
                 fullWidth
@@ -133,87 +132,15 @@ function Login({ setIsLoggedIn }) {
                 color="primary"
                 fullWidth
                 type="submit"
-                onClick={handleLogin}
+                // onClick={handleLogin}
               >
                 Login
               </Button>
-              {/* <Typography
-                variant="body1"
-                align="center"
-                style={{ marginTop: "8px" }}
-              >
-                Don't have an account?
-                <Link to="/signup" style={{ textDecoration: "none" }}>
-                  Sign up
-                </Link>
-              </Typography> */}
             </form>
           </Grid>
-      <Grid container justifyContent="center" alignItems="center" spacing={2}>
-        {/* Logo */}
-        <Grid item xs={12}>
-          <img src={Logo} alt="Logo" style={{ maxWidth: "100%" }} />
-        </Grid>
-        {/* Heading */}
-        <Grid item xs={12}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Welcome To Shop Satellite TV{" "}
-          </Typography>
-        </Grid>
-        {/* Description */}
-        <Grid item xs={12}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Login In
-          </Typography>
-          <Typography variant="body1" align="center">
-            Please enter your email and password to log in.
-          </Typography>{" "}
-        </Grid>
-        <Grid item xs={12}>
-          <form onSubmit={handleLogin}>
-            <TextField
-              label="Email"
-              fullWidth
-              margin="normal"
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <TextField
-              label="Password"
-              fullWidth
-              margin="normal"
-              type="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            {/* Remember Me Checkbox */}
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  name="rememberMe"
-                />
-              }
-              label="Remember Me"
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              fullWidth
-              type="submit"
-              // onClick={handleLogin}
-            >
-              Login
-            </Button>
-          </form>
         </Grid>
       </div>
+
       <div className="rightside">
         <img src={RightImg} alt="Login-Image" />
       </div>
