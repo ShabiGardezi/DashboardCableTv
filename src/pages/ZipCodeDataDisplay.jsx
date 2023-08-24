@@ -1,109 +1,115 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+// src/ProviderForm.js
+
+import React, { useState } from "react";
 import {
-  Table,
-  TableContainer,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-  Paper,
+  TextField,
   Button,
-  Input,
+  Rating,
+  Typography,
+  Box,
+  Container,
+  IconButton,
 } from "@mui/material";
+import { AddCircleOutline as AddCircleOutlineIcon } from "@mui/icons-material";
+import "../styles/ProviderForm.css";
+function ProviderForm() {
+  const [providerName, setProviderName] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [maxSpeed, setMaxSpeed] = useState("");
+  const [features, setFeatures] = useState("");
+  const [price, setPrice] = useState("");
+  const [rating, setRating] = useState(null);
 
-function DataDisplay() {
-  const [data, setData] = useState([]);
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  useEffect(() => {
-    // Fetch all data when the component mounts
-    const fetchAllData = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/all-data");
-        return response.data; // Assuming the response data is an array of objects
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        return []; // Return an empty array or handle the error as needed
-      }
-    };
-
-    // Call fetchAllData and set the data in the state
-    fetchAllData().then((allData) => {
-      setData(allData);
-    });
-  }, []);
-
-  const handleFileInputChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
+  const handleRatingChange = (event, newValue) => {
+    setRating(newValue);
   };
 
-  const handleFileUpload = async () => {
-    if (selectedFile) {
-      try {
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-
-        const response = await axios.post(
-          "http://localhost:5000/upload-json",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-
-        // Handle the response, e.g., show a success message
-        console.log("File upload successful:", response.data);
-      } catch (error) {
-        console.error("Error uploading file:", error);
-        // Handle the error, e.g., show an error message
-      }
-    } else {
-      // Handle case where no file is selected, e.g., show a message to select a file
-      console.error("No file selected");
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission logic here
   };
 
   return (
-    <div>
-      {/* Add Item Button */}
-      <div>
-        <Input type="file" onChange={handleFileInputChange} />
-        <Button variant="contained" color="primary" onClick={handleFileUpload}>
-          Upload File
-        </Button>
-      </div>
-      <h2>Data Table</h2>
+    <Container maxWidth="sm">
+      {/* <div className="provider-header">
+        <h2>Zip Code</h2>
+        <div className="btn-add">
+          <button className="add-now">Add Now</button>
+        </div>
+      </div> */}
+      <form onSubmit={handleSubmit}>
+        <TextField
+          label="Provider Name"
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          value={providerName}
+          onChange={(e) => setProviderName(e.target.value)}
+        />
 
-      <TableContainer component={Paper} style={{ maxHeight: 400 }}>
-        <Table stickyHeader>
-          <TableHead>
-            <TableRow>
-              <TableCell>Provider</TableCell>
-              <TableCell>Prices starting at*</TableCell>
-              <TableCell>Max download speeds up to</TableCell>
-              <TableCell>Features</TableCell>
-              <TableCell>Customer Rating</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row, index) => (
-              <TableRow key={index}>
-                <TableCell>{row.Provider}</TableCell>
-                <TableCell>{row["Prices starting at*"]}</TableCell>
-                <TableCell>{row["Max download speeds up to"]}</TableCell>
-                <TableCell>{row.Features}</TableCell>
-                <TableCell>{row["Customer Rating"]}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+        <TextField
+          label="Zip Code"
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          value={zipCode}
+          onChange={(e) => setZipCode(e.target.value)}
+        />
+        <TextField
+          label="Max Speed"
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          value={maxSpeed}
+          onChange={(e) => setMaxSpeed(e.target.value)}
+        />
+        <TextField
+          label="Channels"
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          value={providerName}
+          onChange={(e) => setProviderName(e.target.value)}
+        />
+        <TextField
+          label="Features"
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          value={features}
+          onChange={(e) => setFeatures(e.target.value)}
+        />
+        <TextField
+          label="Price"
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+        <Typography variant="h6" gutterBottom>
+          Rating
+        </Typography>
+        <Box display="flex" alignItems="center">
+          <Rating
+            name="rating"
+            value={rating}
+            onChange={handleRatingChange}
+            precision={0.1}
+            size="large"
+          />
+          {rating !== null && (
+            <Typography variant="h6" style={{ marginLeft: "10px" }}>
+              {rating}
+            </Typography>
+          )}
+        </Box>
+        <Button variant="contained" color="primary" type="submit">
+          Submit
+        </Button>
+      </form>
+    </Container>
   );
 }
 
-export default DataDisplay;
+export default ProviderForm;
