@@ -36,7 +36,7 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="container">
+    <div className="container-signup">
       <div className="grid">
         {/* Heading */}
         <div className="grid-item">

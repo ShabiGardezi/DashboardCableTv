@@ -62,36 +62,44 @@ function Login({ setIsLoggedIn }) {
 
   return (
     <div className="container">
-      <div className="leftSide">
-        <div className="logo">
-          <img src={Logo} alt="" />
-        </div>
-        <h2 className="heading">Login</h2>
-        <input
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <div className="remember-me">
+      <div className="main">
+        <div className="leftSide">
+          <div className="logo">
+            <img src={Logo} alt="" />
+          </div>
+          <h2 className="heading">Welcome to Shop Satellite Tv</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+            ultrices varius odio, sit amet euismod lorem ultricies eget. Nullam
+            ac aliquam massa. Fusce ullamcorper nisl ultrices tortor consectetur
+            tincidunt.
+          </p>
           <input
-            type="checkbox"
-            id="rememberMe"
-            checked={rememberMe}
-            onChange={() => setRememberMe(!rememberMe)}
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="rememberMe">Remember Me</label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div className="remember-me">
+            <input
+              type="checkbox"
+              id="rememberMe"
+              checked={rememberMe}
+              onChange={() => setRememberMe(!rememberMe)}
+            />
+            <label htmlFor="rememberMe">Remember Me</label>
+          </div>
+          <button onClick={handleLogin}>Login</button>
         </div>
-        <button onClick={handleLogin}>Login</button>
-      </div>
-      <div className="rightSide">
-        <img className="right-img" src={RightImg} alt="" />
+        <div className="rightSide">
+          <img className="right-img" src={RightImg} alt="" />
+        </div>
       </div>
     </div>
   );
