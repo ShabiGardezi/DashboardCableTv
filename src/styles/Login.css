@@ -1,6 +1,9 @@
 .main {
   display: flex;
 }
+.col-6 {
+  width: 50%;
+}
 .container {
   margin: 0px;
   padding: 0px;
@@ -76,8 +79,4 @@ input {
   color: white;
   border: 0px;
   margin-top: 20px;
-}
-.rightSide {
-  width: 650px;
-  height: 690px;
 }
