@@ -6,30 +6,29 @@ import Dashboard from "./components/Dashboard";
 import Pages from "./components/Pages";
 import Zipcodes from "./components/Zipcodes";
 import User from "./components/User";
+import VerticalNavbar from "./components/Sidebar";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="App">
-      <main>
-        <Routes>
-          <Route path="/pages" exact Component={Pages}></Route>
-          <Route path="/zipcode" exact Component={Zipcodes}></Route>
-          <Route path="/user" exact Component={User}></Route>
-          <Route
-            path="/login"
-            exact
-            element={<Login setIsLoggedIn={setIsLoggedIn} />} // This route should have the prop
-          />
-          <Route
-            path="/dashboard/*"
-            exact
-            element={
-              isLoggedIn ? <ProtectedDashboard /> : <Navigate to="/login" />
-            }
-          />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/pages" exact Component={Pages}></Route>
+        <Route path="/zipcode" exact Component={Zipcodes}></Route>
+        <Route path="/user" exact Component={User}></Route>
+        <Route
+          path="/login"
+          exact
+          element={<Login setIsLoggedIn={setIsLoggedIn} />} // This route should have the prop
+        />
+        <Route
+          path="/dashboard/*"
+          exact
+          element={
+            isLoggedIn ? <ProtectedDashboard /> : <Navigate to="/login" />
+          }
+        />
+      </Routes>
     </div>
   );
   function ProtectedDashboard() {

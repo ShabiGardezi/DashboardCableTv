@@ -27,9 +27,10 @@ function ProviderForm() {
   };
 
   return (
-    <>
+    <div className="Provider-container">
       <HeaderCommon title="Zip Code" />
       <Container maxWidth="sm">
+        <h2 className="heading-1">Add Provider</h2>
         <form onSubmit={handleSubmit}>
           <TextField
             label="Provider Name"
@@ -98,11 +99,11 @@ function ProviderForm() {
             )}
           </Box>
           <Button variant="contained" color="primary" type="submit">
-            Submit
+            Add Now
           </Button>
         </form>
       </Container>
-    </>
+    </div>
   );
 }
 
