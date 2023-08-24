@@ -20,6 +20,7 @@ import ExitToApp from "@mui/icons-material/ExitToApp";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { styled } from "@mui/material/styles"; // Import styled from v5import { AccountCircle, ExitToApp, Home, Room } from "@mui/icons-material";
 import { Dashboard } from "@mui/icons-material";
+import Avatar from "../assests/avatar.png";
 const drawerWidth = 240;
 
 const useStyles = styled((theme) => ({
@@ -62,17 +63,16 @@ function VerticalNavbar() {
         <div className={classes.toolbar}>
           {/* Logo */}
           <div className={classes.logoContainer}>
-            <img
-              src={Logo}
-              alt="Logo"
-              className={classes.logo}
-              style={{ maxWidth: "100%" }}
-            />
+            <div className="sideBarLogo">
+              <img
+                src={Logo}
+                alt="Logo"
+                className={classes.logo}
+                style={{ maxWidth: "100%" }}
+              />
+            </div>
           </div>
           {/* End Logo */}
-          {/* <Typography variant="h6" noWrap>
-            Dashboard
-          </Typography> */}
         </div>
         <List>
           <ListItem button>
@@ -114,6 +114,15 @@ function VerticalNavbar() {
             <ListItemText primary="Logout" />
           </ListItem>
         </List>
+        <div className="UserWidget">
+          <div className="leftside">
+            <img src={Avatar} alt="Avater" />
+          </div>
+          <div className="rightside">
+            <h3>Haseeb Irfan</h3>
+            <h4>Admin</h4>
+          </div>
+        </div>
       </Drawer>
     </div>
   );

@@ -13,20 +13,19 @@
 }
 
 .leftSide {
-  width: 720px;
-  height: 690px;
-  padding: 30px;
+  padding-left: 40px;
+  padding-top: 30px;
 }
 .logo img {
-  width: 257px;
-  height: 61px;
+  width: 200px;
+  height: 51px;
 }
 .leftSide .heading {
-  font-size: 24px;
+  /* font-size: 24px; */
   margin-bottom: 10px;
   color: #000;
   font-family: Montserrat;
-  font-size: 48px;
+  font-size: 38px;
   font-style: normal;
   font-weight: 700;
   line-height: 150%;
@@ -35,14 +34,14 @@
 .leftSide p {
   color: #000;
   font-family: Montserrat;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
   text-transform: uppercase;
 }
 input {
-  width: 654px;
+  width: 600px;
   height: 54px;
   border-radius: 5px;
   background: #ececec;
@@ -79,4 +78,13 @@ input {
   color: white;
   border: 0px;
   margin-top: 20px;
+}
+.rightSide {
+  padding-left: 33px;
+  /* width: 720px; */
+  /* height: 690px; */
+}
+.right-img {
+  width: 650px;
+  height: 690px;
 }
