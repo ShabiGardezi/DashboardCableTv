@@ -1,13 +1,4 @@
 import React, { useState } from "react";
-import {
-  Button,
-  TextField,
-  Container,
-  Typography,
-  Grid,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../assests/header-Logo.png";
 import RightImg from "../assests/login.png";
@@ -70,81 +61,39 @@ function Login({ setIsLoggedIn }) {
   // };
 
   return (
-    <Container maxWidth="xs">
-      <div className="leftside">
-        <Grid container justifyContent="center" alignItems="center" spacing={2}>
-          {/* Logo */}
-          <Grid item xs={12}>
-            <div className="logo">
-              <img src={Logo} alt="Logo" style={{ maxWidth: "100%" }} />
-            </div>
-          </Grid>
-          {/* Heading */}
-          <Grid item xs={12}>
-            <Typography variant="h4" align="center" gutterBottom>
-              Welcome To Shop Satellite TV{" "}
-            </Typography>
-          </Grid>
-          {/* Description */}
-          <Grid item xs={12}>
-            <Typography variant="p" align="center" gutterBottom>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              ultrices varius odio, sit amet euismod lorem ultricies eget.
-              Nullam ac aliquam massa. Fusce ullamcorper nisl ultrices tortor
-              consectetur tincidunt.
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <form onSubmit={handleLogin}>
-              <TextField
-                label="Email"
-                fullWidth
-                margin="normal"
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <TextField
-                label="Password"
-                fullWidth
-                margin="normal"
-                type="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              {/* Remember Me Checkbox */}
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    name="rememberMe"
-                  />
-                }
-                label="Remember Me"
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                type="submit"
-                // onClick={handleLogin}
-              >
-                Login
-              </Button>
-            </form>
-          </Grid>
-        </Grid>
+    <div className="container">
+      <div className="leftSide">
+        <div className="logo">
+          <img src={Logo} alt="" />
+        </div>
+        <h2 className="heading">Login</h2>
+        <input
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <div className="remember-me">
+          <input
+            type="checkbox"
+            id="rememberMe"
+            checked={rememberMe}
+            onChange={() => setRememberMe(!rememberMe)}
+          />
+          <label htmlFor="rememberMe">Remember Me</label>
+        </div>
+        <button onClick={handleLogin}>Login</button>
       </div>
-
-      <div className="rightside">
-        <img src={RightImg} alt="Login-Image" />
+      <div className="rightSide">
+        <img className="right-img" src={RightImg} alt="" />
       </div>
-    </Container>
+    </div>
   );
 }
 

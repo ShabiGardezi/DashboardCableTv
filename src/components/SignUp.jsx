@@ -1,16 +1,5 @@
 import "../styles/SignUp.css";
 import React, { useState } from "react";
-import {
-  TextField,
-  Container,
-  Typography,
-  Grid,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Button,
-} from "@mui/material";
 const SignUp = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -47,70 +36,66 @@ const SignUp = () => {
     }
   };
   return (
-    <Container maxWidth="xs">
-      <Grid container justifyContent="center" alignItems="center" spacing={2}>
+    <div className="container">
+      <div className="grid">
         {/* Heading */}
-        <Grid item xs={12}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Welcome To Shop Satellite TV
-          </Typography>
-        </Grid>
+        <div className="grid-item">
+          <h4 className="heading">Welcome To Shop Satellite TV</h4>
+        </div>
         {/* Description */}
-        <Grid item xs={12}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Sign Up
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
+        <div className="grid-item">
+          <h4 className="heading">Sign Up</h4>
+        </div>
+        <div className="grid-item">
           <form onSubmit={handleSubmit}>
-            <TextField
-              label="Username"
-              fullWidth
-              margin="normal"
+            <input
+              className="text-input"
+              type="text"
               name="username"
+              placeholder="Username"
               value={formData.username}
               onChange={handleChange}
               required
             />
-            <TextField
-              label="Email"
-              fullWidth
-              margin="normal"
+            <input
+              className="text-input"
               type="email"
               name="email"
+              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
               required
             />
-            <TextField
-              label="Password"
-              fullWidth
-              margin="normal"
+            <input
+              className="text-input"
               type="password"
               name="password"
+              placeholder="Password"
               value={formData.password}
               onChange={handleChange}
               required
             />
-            <FormControl fullWidth margin="normal">
-              <InputLabel>Role</InputLabel>
-              <Select
-                name="role"
-                value={formData.role}
-                onChange={handleChange}
-                required
-              >
-                <MenuItem value="user">User</MenuItem>
-                <MenuItem value="admin">Admin</MenuItem>
-              </Select>
-            </FormControl>
-            <Button variant="contained" color="primary" type="submit">
+            <select
+              className="select-input"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Choose Role
+              </option>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+
+            <button className="submit-button" type="submit">
               Add Now
-            </Button>
+            </button>
           </form>
-        </Grid>
-      </Grid>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 
