@@ -1,0 +1,11 @@
+.HeaderBackground {
+  height: 200px;
+}
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heading {
+  color: white;
+}
