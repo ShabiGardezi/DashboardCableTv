@@ -1,9 +1,5 @@
-/* .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
-  width: 13%;
-} */
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation0.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
   width: 250px;
-  /* height: auto; */
   padding: 15px;
 }
 .sideBarLogo {
@@ -12,7 +8,6 @@
   padding-bottom: 20px;
   border-bottom: 2px solid #ececec;
 }
-/* navbarstart */
 .MuiList-root.MuiList-padding.css-h4y409-MuiList-root {
   height: 499px;
   height: auto;
@@ -77,4 +72,21 @@
   letter-spacing: 1.4px;
   text-transform: uppercase;
   margin-top: -10px;
+}
+/* Existing styles... */
+
+/* Add this style to target active navigation items */
+.MuiListItem-root.active {
+  background-color: #010c3a; /* Change this to the desired active color */
+}
+
+/* Change the color of navigation items when hovered or focused */
+.MuiButtonBase-root.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.MuiListItem-button.css-bshv44-MuiButtonBase-root-MuiListItem-root:hover,
+.MuiButtonBase-root.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.MuiListItem-button.css-bshv44-MuiButtonBase-root-MuiListItem-root:focus {
+  background-color: #f5f5f5; /* Change this to the desired hover/focus color */
+}
+
+/* Add this style to target active link text color */
+.MuiListItem-root.active .MuiTypography-root {
+  color: #ffffff; /* Change this to the desired active text color */
 }

@@ -88,11 +88,10 @@ const SignUp = () => {
               <option value="user">User</option>
               <option value="admin">Admin</option>
             </select>
-
-            <button className="submit-button" type="submit">
-              Add Now
-            </button>
           </form>
+          <button className="submit-button" type="submit">
+            Add Now
+          </button>
         </div>
       </div>
     </div>
