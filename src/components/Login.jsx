@@ -3,46 +3,34 @@ import { useNavigate, Link } from "react-router-dom";
 import Logo from "../assests/header-Logo.png";
 import RightImg from "../assests/login.png";
 import "../styles/Login.css";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+import { LoadingButton } from "@mui/lab";
 
 function Login({ setIsLoggedIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setloading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+      const response = await axios.post("http://localhost:5000/api/login", {
+        email: email,
+        password: password,
       });
 
-      if (response.status === 200) {
-        setIsLoggedIn(true);
-        navigate("/dashboard");
-
-        // Check if "Remember Me" is checked, and save email and password to local storage
-        if (rememberMe) {
-          localStorage.setItem("rememberedEmail", email);
-          localStorage.setItem("rememberedPassword", password);
-        } else {
-          // If "Remember Me" is not checked, clear any saved data in local storage
-          localStorage.removeItem("rememberedEmail");
-          localStorage.removeItem("rememberedPassword");
-        }
-        console.log(response.status);
-      } else if (response.status === 401) {
-        console.log("Wrong email or password");
-      } else {
-        console.log("An error occurred");
-      }
+      setIsLoggedIn(true);
+      console.log(response.data);
+      localStorage.setItem("user", JSON.stringify(response.data.payload));
+      navigate("/dashboard");
     } catch (error) {
-      console.error("Error:", error);
+      console.log("Error:", error);
+      toast.error(error.response.data.message);
     }
   };
   React.useEffect(() => {
@@ -62,6 +50,7 @@ function Login({ setIsLoggedIn }) {
 
   return (
     <div className="container">
+      <Toaster />
       <div className="main">
         <div className="col-6">
           <div className="leftSide">
@@ -96,7 +85,14 @@ function Login({ setIsLoggedIn }) {
               />
               <label htmlFor="rememberMe">Remember Me</label>
             </div>
-            <button onClick={handleLogin}>Login</button>
+            <LoadingButton
+              loading={loading}
+              variant="contained"
+              color="primary"
+              onClick={handleLogin}
+            >
+              Login
+            </LoadingButton>
           </div>
         </div>
         <div className="col-6">

@@ -9,6 +9,10 @@ import {
 } from "@mui/material";
 import "../styles/ProviderForm.css";
 import HeaderCommon from "./HeaderCommon";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+import { LoadingButton } from "@mui/lab";
+
 function ProviderForm() {
   const [providerName, setProviderName] = useState("");
   const [zipCode, setZipCode] = useState("");
@@ -17,17 +21,37 @@ function ProviderForm() {
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState(null);
   const [channel, setChannel] = useState("");
+  const [loading, setloading] = useState(false);
 
   const handleRatingChange = (_event, newValue) => {
     setRating(newValue);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      setloading(true);
+      const res = await axios.post(`http://localhost:5000/api/add-provider`, {
+        CompanyName: providerName,
+        zipcodes: [zipCode],
+        MaxDownloadSpeedsUpTo: maxSpeed,
+        Features: features,
+        Price: price,
+        rating: rating,
+        Channels: channel,
+      });
+
+      toast.success("Successfully added");
+    } catch (error) {
+      console.log(error);
+      toast.error("Error adding provider");
+    }
+    setloading(false);
   };
 
   return (
     <div className="Provider-container">
+      <Toaster />
       <HeaderCommon title="Zip Code" />
       <Container maxWidth="sm">
         <h2 className="heading-1">Add Provider</h2>
@@ -98,9 +122,15 @@ function ProviderForm() {
               </Typography>
             )}
           </Box>
-          <Button variant="contained" color="primary" type="submit">
+
+          <LoadingButton
+            loading={loading}
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
             Add Now
-          </Button>
+          </LoadingButton>
         </form>
       </Container>
     </div>

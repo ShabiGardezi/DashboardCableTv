@@ -44,7 +44,7 @@ const useStyles = styled((theme) => ({
 function VerticalNavbar() {
   const classes = useStyles();
   const navigate = useNavigate();
-
+  const user = JSON.parse(localStorage.getItem("user"));
   const handleLogout = () => {
     navigate("/login");
     localStorage.removeItem("authToken");
@@ -99,14 +99,18 @@ function VerticalNavbar() {
               <ListItemText primary="Zip Code" />
             </Link>
           </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <AccountCircle />
-            </ListItemIcon>
-            <Link to="/user">
-              <ListItemText primary="User" />
-            </Link>
-          </ListItem>
+
+          {user.role === "admin" && (
+            <ListItem button>
+              <ListItemIcon>
+                <AccountCircle />
+              </ListItemIcon>
+              <Link to="/user">
+                <ListItemText primary="User" />
+              </Link>
+            </ListItem>
+          )}
+
           <ListItem button onClick={handleLogout}>
             <ListItemIcon>
               <ExitToApp />

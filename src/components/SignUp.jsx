@@ -1,5 +1,8 @@
 import "../styles/SignUp.css";
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { LoadingButton } from "@mui/lab";
+import axios from "axios";
 const SignUp = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -7,6 +10,7 @@ const SignUp = () => {
     password: "",
     role: "", // Set a default value for role
   });
+  const [loading, setloading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,26 +21,25 @@ const SignUp = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
+      setloading(true);
       const { username, email, password, role } = formData;
       const userData = { username, email, password, role };
-
-      const response = await fetch("http://localhost:5000/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
+      const response = await axios.post("http://localhost:5000/api/signup", {
+        ...userData,
       });
-      const data = await response.json();
-      console.log(data);
+
+      console.log(response.data);
+      toast.success("Successfully added");
     } catch (error) {
       console.error("Error:", error);
+      toast.error(error.response.data.message);
     }
+    setloading(false);
   };
   return (
     <div className="container-signup">
+      <Toaster />
       <div className="grid">
         {/* Heading */}
         <div className="grid-item">
@@ -88,10 +91,16 @@ const SignUp = () => {
               <option value="user">User</option>
               <option value="admin">Admin</option>
             </select>
+
+            <LoadingButton
+              loading={loading}
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
+              Add Now
+            </LoadingButton>
           </form>
-          <button className="submit-button" type="submit">
-            Add Now
-          </button>
         </div>
       </div>
     </div>
