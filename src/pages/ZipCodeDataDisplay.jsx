@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import {
   TextField,
   Button,
+  Select,
+  MenuItem,
   Rating,
   Typography,
   Box,
@@ -21,6 +23,7 @@ function ProviderForm() {
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState(null);
   const [channel, setChannel] = useState("");
+  const [category, setCategory] = useState("");
   const [loading, setloading] = useState(false);
 
   const handleRatingChange = (_event, newValue) => {
@@ -39,6 +42,7 @@ function ProviderForm() {
         Price: price,
         rating: rating,
         Channels: channel,
+        Category: category,
       });
 
       toast.success("Successfully added");
@@ -52,7 +56,7 @@ function ProviderForm() {
   return (
     <div className="Provider-container">
       <Toaster />
-      <HeaderCommon title="Zip Code" />
+      <HeaderCommon title="Add Zip Code" />
       <Container maxWidth="sm">
         <h2 className="heading-1">Add Provider</h2>
         <form onSubmit={handleSubmit}>
@@ -105,6 +109,22 @@ function ProviderForm() {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
+
+          <Typography variant="h6" gutterBottom>
+            Category
+          </Typography>
+          <Select
+            label="Category"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <MenuItem value="TV">TV</MenuItem>
+            <MenuItem value="Internet">Internet</MenuItem>
+            <MenuItem value="Bundles">Bundles</MenuItem>
+          </Select>
           <Typography variant="h6" gutterBottom>
             Rating
           </Typography>

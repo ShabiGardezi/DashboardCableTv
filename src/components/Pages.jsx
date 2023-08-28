@@ -1,15 +1,20 @@
 import React from "react";
 import VerticalNavbar from "./Sidebar";
 import { Container, Typography } from "@mui/material";
+import AllPages from "../pages/AllPages";
+import HeaderCommon from "../pages/HeaderCommon";
 
 function Pages() {
   return (
-    <Container maxWidth="xs">
-      <VerticalNavbar />
-      <Typography variant="h4" align="center" gutterBottom>
-        All Pages here
-      </Typography>
-    </Container>
+    <>
+      <HeaderCommon title="Pages"/>
+      <Container maxWidth="xs">
+        <VerticalNavbar />
+        <Typography variant="h4" align="center" gutterBottom>
+          <AllPages />
+        </Typography>
+      </Container>
+    </>
   );
 }
 

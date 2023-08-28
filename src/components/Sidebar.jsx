@@ -96,7 +96,16 @@ function VerticalNavbar() {
               <Room />
             </ListItemIcon>
             <Link to="/zipcode">
-              <ListItemText primary="Zip Code" />
+              <ListItemText primary="Add Zip Code" />
+            </Link>
+          </ListItem>
+
+          <ListItem button>
+            <ListItemIcon>
+              <Room />
+            </ListItemIcon>
+            <Link to="/update_privoder">
+              <ListItemText primary="Update Zip Code" />
             </Link>
           </ListItem>
 
