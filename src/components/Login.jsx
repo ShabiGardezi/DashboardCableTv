@@ -42,11 +42,6 @@ function Login({ setIsLoggedIn }) {
       setRememberMe(true);
     }
   }, []);
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // You can handle login logic here, e.g., sending data to the server.
-  //   // console.log(formData);
-  // };
 
   return (
     <div className="container">

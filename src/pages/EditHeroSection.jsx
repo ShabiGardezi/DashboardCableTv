@@ -9,12 +9,12 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import VerticalNavbar from "../components/Sidebar";
 import HeaderCommon from "../pages/HeaderCommon";
 import "../styles/MainSectionEditor.css";
-const MainSectionEditor = () => {
+const EditHeroSection = () => {
   const [formData, setFormData] = useState({
     title: "",
-    subtitle: "",
-    main_content: "",
-    image: "",
+    heading: "",
+    description: "",
+    HeroBG: "",
   });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,10 +25,10 @@ const MainSectionEditor = () => {
   };
 
   const [data, setData] = useState({
-    title: "Home.main_section.title",
-    subtitle: "Home.main_section.subtitle",
-    main_content: "Home.main_section.main_content",
-    image: "Home.main_section.MainBG",
+    title: "Home.hero_section.title",
+    heading: "Home.hero_section.heading",
+    description: "Home.hero_section.description",
+    HeroBG: "Home.hero_section.MainBG",
   });
 
   const handleImageUpload = (e) => {
@@ -42,7 +42,7 @@ const MainSectionEditor = () => {
   return (
     <>
       <VerticalNavbar />
-      <HeaderCommon title="Edit Home Page Main Section" />
+      <HeaderCommon title="Edit Home Page Hero Section" />
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}></Grid>
@@ -61,23 +61,22 @@ const MainSectionEditor = () => {
                 />
                 <TextField
                   fullWidth
-                  label="Subtitle"
-                  name="subtitle"
-                  value={formData.subtitle}
+                  label="Heading"
+                  name="heading"
+                  value={formData.heading}
                   onChange={handleInputChange}
                   margin="normal"
                   variant="outlined"
                 />
                 <TextField
                   fullWidth
-                  label="Main Content"
-                  name="maincontent"
-                  value={formData.main_content}
+                  label="Description"
+                  name="description"
+                  value={formData.description}
                   onChange={handleInputChange}
                   margin="normal"
                   variant="outlined"
                   multiline // This enables multiline input
-
                 />
                 <div className="uploadimg">
                   <label>Upload Image:</label>
@@ -121,4 +120,4 @@ const MainSectionEditor = () => {
   );
 };
 
-export default MainSectionEditor;
+export default EditHeroSection;

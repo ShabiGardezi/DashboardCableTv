@@ -35,39 +35,51 @@ const AllPages = () => {
                 </li>
                 <li>
                   <span>Hero Section</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="hero_section">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Blogs</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="blog_section">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Services</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="service_section">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>About Shop Satellite TV</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="aboutshopsatellite_section">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Check Service Providers</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="checkserviceprovider_section">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Footer</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="footer_section">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>
