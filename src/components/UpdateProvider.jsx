@@ -13,14 +13,19 @@ import {
 import "../styles/ProviderForm.css";
 import HeaderCommon from "../pages/HeaderCommon";
 import VerticalNavbar from "./Sidebar";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+import { LoadingButton } from "@mui/lab";
 function ProviderForm() {
   const [providerName, setProviderName] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [maxSpeed, setMaxSpeed] = useState("");
-  const [features, setFeatures] = useState("");
-  const [price, setPrice] = useState("");
+  const [zipcodes, setzipcodes] = useState("");
+  const [MaxDownloadSpeedsUpTo, setMaxDownloadSpeedsUpTo] = useState("");
+  const [Features, setFeatures] = useState("");
+  const [Price, setPrice] = useState("");
   const [rating, setRating] = useState(null);
-  const [channel, setChannel] = useState("");
+  const [Channels, setChannels] = useState("");
+  const [loading, setloading] = useState(false);
+
   const companies = [
     "FeaturesAT&T Internet + TV",
     "AT&T Internet",
@@ -90,12 +95,33 @@ function ProviderForm() {
     setRating(newValue);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      setloading(true);
+      const response = await axios.post(
+        `http://localhost:5000/api/update/provider?companyName=${providerName}`,
+        {
+          zipcodes: zipcodes || null,
+          MaxDownloadSpeedsUpTo: MaxDownloadSpeedsUpTo || null,
+          Features: Features || null,
+          Price: Price ? parseFloat(Price) : null,
+          rating: rating || null,
+          Channels: Channels || null,
+        }
+      );
+      toast.success("Successfully Updated");
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(error.response.data.message);
+    }
+    setloading(false);
   };
 
   return (
     <>
+      <Toaster />
+
       <VerticalNavbar />
       <div className="Provider-container">
         <HeaderCommon title="Update Zip Code" />
@@ -134,31 +160,31 @@ function ProviderForm() {
               fullWidth
               variant="outlined"
               margin="normal"
-              value={zipCode}
-              onChange={(e) => setZipCode(e.target.value)}
+              value={zipcodes}
+              onChange={(e) => setzipcodes(e.target.value)}
             />
             <TextField
               label="Max Speed"
               fullWidth
               variant="outlined"
               margin="normal"
-              value={maxSpeed}
-              onChange={(e) => setMaxSpeed(e.target.value)}
+              value={MaxDownloadSpeedsUpTo}
+              onChange={(e) => setMaxDownloadSpeedsUpTo(e.target.value)}
             />
             <TextField
-              label="Channels"
+              label="Channelss"
               fullWidth
               variant="outlined"
               margin="normal"
-              value={channel}
-              onChange={(e) => setChannel(e.target.value)}
+              value={Channels}
+              onChange={(e) => setChannels(e.target.value)}
             />
             <TextField
               label="Features"
               fullWidth
               variant="outlined"
               margin="normal"
-              value={features}
+              value={Features}
               onChange={(e) => setFeatures(e.target.value)}
             />
             <TextField
@@ -166,7 +192,7 @@ function ProviderForm() {
               fullWidth
               variant="outlined"
               margin="normal"
-              value={price}
+              value={Price}
               onChange={(e) => setPrice(e.target.value)}
             />
             <Typography variant="h6" gutterBottom>
@@ -186,9 +212,14 @@ function ProviderForm() {
                 </Typography>
               )}
             </Box>
-            <Button variant="contained" color="primary" type="submit">
-              Add Now
-            </Button>
+            <LoadingButton
+              loading={loading}
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
+              Update
+            </LoadingButton>
           </form>
         </Container>
       </div>
