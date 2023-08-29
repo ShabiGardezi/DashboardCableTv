@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/AllPages.css";
+import { Link } from "react-router-dom";
 const AllPages = () => {
   return (
     <div className="accordion" id="accordionExample">
@@ -26,9 +27,11 @@ const AllPages = () => {
               <ul>
                 <li>
                   <span>Main Section</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="main_section">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Hero Section</span>

@@ -75,14 +75,14 @@ function VerticalNavbar() {
           {/* End Logo */}
         </div>
         <List>
-          <ListItem button>
+          {/* <ListItem button>
             <ListItemIcon>
               <DashboardIcon />
             </ListItemIcon>
             <Link to="/dashboard">
               <ListItemText primary="Dashboard" />
             </Link>
-          </ListItem>
+          </ListItem> */}
           <ListItem button>
             <ListItemIcon>
               <Home />
