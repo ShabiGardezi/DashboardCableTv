@@ -2,7 +2,7 @@
   list-style: none;
   text-decoration: none;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
 }
 .accordion-body ul li:not(:last-child) {
@@ -20,4 +20,13 @@ h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.MuiTypography-g
 }
 .MuiContainer-root.MuiContainer-maxWidthXs.css-nzinn5-MuiContainer-root {
   margin-top: 50px;
+}
+.col-8 {
+  width: 100%;
+  margin-right: 20px;
+}
+div#accordionExample {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

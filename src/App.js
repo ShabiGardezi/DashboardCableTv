@@ -8,6 +8,7 @@ import Zipcodes from "./components/Zipcodes";
 import User from "./components/User";
 import VerticalNavbar from "./components/Sidebar";
 import UpdateProvider from "./components/UpdateProvider";
+import MainSectionEditor from "./pages/MainSectionEditor";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -15,6 +16,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/pages" exact Component={Pages}></Route>
+        <Route
+          path="/pages/main_section"
+          exact
+          Component={MainSectionEditor}
+        ></Route>
         <Route path="/update_privoder" exact Component={UpdateProvider}></Route>
         <Route path="/zipcode" exact Component={Zipcodes}></Route>
         <Route path="/user" exact Component={User}></Route>
