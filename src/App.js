@@ -6,7 +6,6 @@ import Dashboard from "./components/Dashboard";
 import Pages from "./components/Pages";
 import Zipcodes from "./components/Zipcodes";
 import User from "./components/User";
-import VerticalNavbar from "./components/Sidebar";
 import UpdateProvider from "./components/UpdateProvider";
 import MainSectionEditor from "./pages/MainSectionEditor";
 import EditHeroSection from "./pages/EditHeroSection";
@@ -15,6 +14,20 @@ import EditServiceSection from "./pages/EditServiceSection";
 import EditAboutShopSatelliteTVSection from "./pages/EditAboutShopSatelliteTVSection";
 import EditCheckServicesProvidersSection from "./pages/EditCheckServicesProvidersSection";
 import EditFooterSection from "./pages/EditFooterSection";
+import EditHeroCommon from "./pages/ServiceProviders/EditHeroCommon";
+import EditHeroCommonAbout from "./pages/AboutUs/EditHeroCommonAbout";
+import HeroCommonContactUs from "./pages/ContactUs/HeroCommonContactUs";
+import EditHeroCommonServices from "./pages/Services/EditHeroCommonServices";
+import EditHeroCommonPrivacyPolicy from "./pages/PrivacyPolicy/EditHeroCommonPP";
+import EditContentPrivacyPolicy from "./pages/PrivacyPolicy/EditContent-PrivacyPolicy";
+import EditHeroCommonCableTV from "./pages/CableTV/EditHeroCommonCableTV";
+import EditContentCableTV from "./pages/CableTV/EditContentCableTv";
+import EditHeroCommonCableInterent from "./pages/CableInternet/EditHeroCommonCableInternet";
+import EditContentCableInternet from "./pages/CableInternet/EditContentCableInternet";
+import EditHeroCommonSatelliteTV from "./pages/SatelliteTV/EditHeroCommonSatelliteTV";
+import EditContentSatelliteTV from "./pages/SatelliteTV/EditContentSatelliteTv";
+import EditHeroCommonSatelliteInternet from "./pages/SatelliteInternet/EditHeroCommonSatelliteInternet";
+import EditContentSatelliteInternet from "./pages/SatelliteInternet/EditContentSatelliteInternet";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -31,7 +44,7 @@ function App() {
           path="/pages/hero_section"
           exact
           Component={EditHeroSection}
-        ></Route>{" "}
+        ></Route>
         <Route
           path="/pages/blog_section"
           exact
@@ -46,7 +59,7 @@ function App() {
           path="/pages/service_section"
           exact
           Component={EditServiceSection}
-        ></Route>{" "}
+        ></Route>
         <Route
           path="/pages/footer_section"
           exact
@@ -56,6 +69,81 @@ function App() {
           path="/pages/aboutshopsatellite_section"
           exact
           Component={EditAboutShopSatelliteTVSection}
+        ></Route>
+        <Route
+          path="/pages/serviceproivder/hero_common"
+          exact
+          Component={EditHeroCommon}
+        ></Route>
+        <Route
+          path="/pages/contactus/hero_common"
+          exact
+          Component={HeroCommonContactUs}
+        ></Route>
+        <Route
+          path="/pages/contactus/contact_content"
+          exact
+          Component={HeroCommonContactUs}
+        ></Route>
+        <Route
+          path="/pages/aboutus/hero_common"
+          exact
+          Component={EditHeroCommonAbout}
+        ></Route>
+        <Route
+          path="/pages/services/hero_common"
+          exact
+          Component={EditHeroCommonServices}
+        ></Route>
+        <Route
+          path="/pages/privacy_policy/hero_common"
+          exact
+          Component={EditHeroCommonPrivacyPolicy}
+        ></Route>
+        <Route
+          path="/pages/privacy_policy/content"
+          exact
+          Component={EditContentPrivacyPolicy}
+        ></Route>
+        <Route
+          path="/pages/cabletv/hero_common"
+          exact
+          Component={EditHeroCommonCableTV}
+        ></Route>
+        <Route
+          path="/pages/cabletv/content"
+          exact
+          Component={EditContentCableTV}
+        ></Route>{" "}
+        <Route
+          path="/pages/cableinternet/hero_common"
+          exact
+          Component={EditHeroCommonCableInterent}
+        ></Route>
+        <Route
+          path="/pages/cableinternet/content"
+          exact
+          Component={EditContentCableInternet}
+        ></Route>
+        <Route
+          path="/pages/satellite_tv/hero_common"
+          exact
+          Component={EditHeroCommonSatelliteTV}
+        ></Route>
+        <Route
+          path="/pages/satellite_tv/content"
+          exact
+          Component={EditContentSatelliteTV}
+        ></Route>{" "}
+        <Route
+          path="/pages/satellite_internet/hero_common"
+          exact
+          Component={EditHeroCommonSatelliteInternet}
+        ></Route>
+        <Route
+          path="/pages/satellite_internet/content"
+          exact
+          Component={EditContentSatelliteInternet}
         ></Route>
         <Route path="/update_privoder" exact Component={UpdateProvider}></Route>
         <Route path="/zipcode" exact Component={Zipcodes}></Route>

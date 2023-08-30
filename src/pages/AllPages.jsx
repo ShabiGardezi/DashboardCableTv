@@ -20,7 +20,7 @@ const AllPages = () => {
           </h2>
           <div
             id="collapseOne"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
@@ -100,7 +100,7 @@ const AllPages = () => {
           </h2>
           <div
             id="collapseThree"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
@@ -108,9 +108,11 @@ const AllPages = () => {
               <ul>
                 <li>
                   <span>Hero Common</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="serviceproivder/hero_common">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -138,9 +140,11 @@ const AllPages = () => {
               <ul>
                 <li>
                   <span>Hero Common</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="aboutus/hero_common">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -170,15 +174,19 @@ const AllPages = () => {
               <ul>
                 <li>
                   <span>Hero Common</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="contactus/hero_common">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Contact-Content</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="contactus/contact_content">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -207,9 +215,11 @@ const AllPages = () => {
               <ul>
                 <li>
                   <span>Hero Common</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="services/hero_common">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -240,15 +250,19 @@ const AllPages = () => {
               <ul>
                 <li>
                   <span>Hero Common</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="privacy_policy/hero_common">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Content-PrivacyPolicy</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="privacy_policy/content">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -276,15 +290,19 @@ const AllPages = () => {
               <ul>
                 <li>
                   <span>Hero Common</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="cabletv/hero_common">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Cable TV</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="cabletv/content">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -312,15 +330,19 @@ const AllPages = () => {
               <ul>
                 <li>
                   <span>Hero Common</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="cableinternet/hero_common">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Cable Internet</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="cableinternet/content">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -348,15 +370,19 @@ const AllPages = () => {
               <ul>
                 <li>
                   <span>Hero Common</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="satellite_internet/hero_common">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Satellite Internet</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="satellite_internet/content">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -384,15 +410,19 @@ const AllPages = () => {
               <ul>
                 <li>
                   <span>Hero Common</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="satellite_tv/hero_common">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <span>Satellite TV</span>
-                  <button className="btn btn-secondary btn-sm ms-2">
-                    Edit
-                  </button>
+                  <Link to="satellite_tv/content">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>
