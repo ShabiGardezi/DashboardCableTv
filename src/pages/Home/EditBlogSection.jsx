@@ -8,10 +8,10 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import VerticalNavbar from "../components/Sidebar";
-import HeaderCommon from "./HeaderCommon";
-import "../styles/MainSectionEditor.css";
-import "../styles/EditBlogSection.css";
+import VerticalNavbar from "../../components/Sidebar";
+import HeaderCommon from "../HeaderCommon";
+import "../../styles/MainSectionEditor.css";
+import "../../styles/EditBlogSection.css";
 const EditBlogSection = () => {
   const [formData, setFormData] = useState({
     title: "",

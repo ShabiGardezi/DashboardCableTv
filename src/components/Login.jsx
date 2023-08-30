@@ -27,7 +27,7 @@ function Login({ setIsLoggedIn }) {
       setIsLoggedIn(true);
       console.log(response.data);
       localStorage.setItem("user", JSON.stringify(response.data.payload));
-      navigate("/dashboard");
+      navigate("/pages");
     } catch (error) {
       console.log("Error:", error);
       toast.error(error.response.data.message);

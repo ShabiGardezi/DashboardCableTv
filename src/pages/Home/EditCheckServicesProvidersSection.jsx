@@ -5,59 +5,71 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import VerticalNavbar from "../components/Sidebar";
-import HeaderCommon from "./HeaderCommon";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import VerticalNavbar from "../../components/Sidebar";
+import HeaderCommon from "../HeaderCommon";
 
-// import "../styles/EditAboutShopSatelliteTVSection.css"; // You can create this CSS file
-
-const EditAboutShopSatelliteTVSection = () => {
+const EditCheckServicesProvidersSection = () => {
   // Define the initial state based on the provided object
-  const initialAboutShopSatelliteTVState = {
+  const initialCheckServicesProvidersState = {
     title: "About the Satellite",
     heading: "Our Satellite Mission",
     description: "Our satellite is on a mission to explore outer space.",
     fig_1: "Number of Satellites 1",
     fig_2: "Number of Satellites 2",
     fig_3: "Number of Satellites 3",
-    aboutshopsatelliteBG: "Background Image for About Shop Satellite Section",
+    CheckServicesProvidersBG: "Background Image of the CheckServicesProviders",
   };
 
-  // Create state variables for aboutshopsatellitetv section
-  const [aboutShopSatelliteTV, setAboutShopSatelliteTV] = useState(
-    initialAboutShopSatelliteTVState
+  // Create state variables for CheckServicesProviders section
+  const [checkServicesProviders, setCheckServicesProviders] = useState(
+    initialCheckServicesProvidersState
   );
 
-  // Create functions to update the state of the aboutshopsatellitetv section
-  const handleAboutShopSatelliteTVUpdate = () => {
+  // Create functions to update the state of the CheckServicesProviders section
+  const handleCheckServicesProvidersUpdate = () => {
     // Update the state with the current values
-    setAboutShopSatelliteTV({ ...aboutShopSatelliteTV });
+    setCheckServicesProviders({ ...checkServicesProviders });
   };
+
+  // Function to handle image upload
   const handleImageUpload = (e) => {
-    // Handle image upload here and set it in formData
+    // Handle image upload here and set it in the state
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCheckServicesProviders({
+          ...checkServicesProviders,
+          CheckServicesProvidersBG: reader.result,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
   };
+
   return (
     <>
       <VerticalNavbar />
-      <HeaderCommon title="Edit About Shop Satellite TV Section" />
+      <HeaderCommon title="Edit Check Services Providers Section" />
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}></Grid>
           <Grid item xs={12} md={9}>
             <Paper elevation={3} style={{ padding: "20px" }}>
               <Typography variant="h6">
-                Edit About Shop Satellite TV Section
+                Edit Check Services Providers Section
               </Typography>
 
-              {/* Edit About Shop Satellite TV Section Fields */}
+              {/* Edit Check Services Providers Section Fields */}
               <TextField
                 fullWidth
                 label="Title"
                 name="title"
-                value={aboutShopSatelliteTV.title}
+                value={checkServicesProviders.title}
                 onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
+                  setCheckServicesProviders({
+                    ...checkServicesProviders,
                     title: e.target.value,
                   })
                 }
@@ -68,10 +80,10 @@ const EditAboutShopSatelliteTVSection = () => {
                 fullWidth
                 label="Heading"
                 name="heading"
-                value={aboutShopSatelliteTV.heading}
+                value={checkServicesProviders.heading}
                 onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
+                  setCheckServicesProviders({
+                    ...checkServicesProviders,
                     heading: e.target.value,
                   })
                 }
@@ -82,10 +94,10 @@ const EditAboutShopSatelliteTVSection = () => {
                 fullWidth
                 label="Description"
                 name="description"
-                value={aboutShopSatelliteTV.description}
+                value={checkServicesProviders.description}
                 onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
+                  setCheckServicesProviders({
+                    ...checkServicesProviders,
                     description: e.target.value,
                   })
                 }
@@ -97,10 +109,10 @@ const EditAboutShopSatelliteTVSection = () => {
                 fullWidth
                 label="Figure 1"
                 name="fig_1"
-                value={aboutShopSatelliteTV.fig_1}
+                value={checkServicesProviders.fig_1}
                 onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
+                  setCheckServicesProviders({
+                    ...checkServicesProviders,
                     fig_1: e.target.value,
                   })
                 }
@@ -111,10 +123,10 @@ const EditAboutShopSatelliteTVSection = () => {
                 fullWidth
                 label="Figure 2"
                 name="fig_2"
-                value={aboutShopSatelliteTV.fig_2}
+                value={checkServicesProviders.fig_2}
                 onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
+                  setCheckServicesProviders({
+                    ...checkServicesProviders,
                     fig_2: e.target.value,
                   })
                 }
@@ -125,16 +137,18 @@ const EditAboutShopSatelliteTVSection = () => {
                 fullWidth
                 label="Figure 3"
                 name="fig_3"
-                value={aboutShopSatelliteTV.fig_3}
+                value={checkServicesProviders.fig_3}
                 onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
+                  setCheckServicesProviders({
+                    ...checkServicesProviders,
                     fig_3: e.target.value,
                   })
                 }
                 margin="normal"
                 variant="outlined"
               />
+
+              {/* Upload Background Image */}
               <div className="uploadimg">
                 <label>Upload Image:</label>
                 <input
@@ -164,7 +178,7 @@ const EditAboutShopSatelliteTVSection = () => {
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={handleAboutShopSatelliteTVUpdate}
+                  onClick={handleCheckServicesProvidersUpdate}
                   style={{ marginTop: "10px" }}
                 >
                   Update
@@ -178,4 +192,4 @@ const EditAboutShopSatelliteTVSection = () => {
   );
 };
 
-export default EditAboutShopSatelliteTVSection;
+export default EditCheckServicesProvidersSection;

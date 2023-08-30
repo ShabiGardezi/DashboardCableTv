@@ -2,7 +2,7 @@
   list-style: none;
   text-decoration: none;
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: space-between;
 }
 .accordion-body ul li:not(:last-child) {

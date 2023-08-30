@@ -7,7 +7,7 @@ const Dashboard = () => {
     <Container maxWidth="xs">
       <VerticalNavbar />
       <Typography variant="h4" align="center" gutterBottom>
-        Dashboard Items here
+        {/* Dashboard Items here */}
       </Typography>
     </Container>
   );

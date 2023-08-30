@@ -7,13 +7,14 @@ import Pages from "./components/Pages";
 import Zipcodes from "./components/Zipcodes";
 import User from "./components/User";
 import UpdateProvider from "./components/UpdateProvider";
-import MainSectionEditor from "./pages/MainSectionEditor";
-import EditHeroSection from "./pages/EditHeroSection";
-import EditBlogSection from "./pages/EditBlogSection";
-import EditServiceSection from "./pages/EditServiceSection";
-import EditAboutShopSatelliteTVSection from "./pages/EditAboutShopSatelliteTVSection";
-import EditCheckServicesProvidersSection from "./pages/EditCheckServicesProvidersSection";
-import EditFooterSection from "./pages/EditFooterSection";
+// import MainSectionEditor from "./components/MainSectionEditor";
+import MainSectionEditor from "./pages/Home/MainSectionEditor";
+import EditHeroSection from "./pages/Home/EditHeroSection";
+import EditBlogSection from "./pages/Home/EditBlogSection";
+import EditServiceSection from "./pages/Home/EditServiceSection";
+import EditAboutShopSatelliteTVSection from "./pages/Home/EditAboutShopSatelliteTVSection";
+import EditCheckServicesProvidersSection from "./pages/Home/EditCheckServicesProvidersSection";
+import EditFooterSection from "./pages/Home/EditFooterSection";
 import EditHeroCommon from "./pages/ServiceProviders/EditHeroCommon";
 import EditHeroCommonAbout from "./pages/AboutUs/EditHeroCommonAbout";
 import HeroCommonContactUs from "./pages/ContactUs/HeroCommonContactUs";
@@ -28,6 +29,7 @@ import EditHeroCommonSatelliteTV from "./pages/SatelliteTV/EditHeroCommonSatelli
 import EditContentSatelliteTV from "./pages/SatelliteTV/EditContentSatelliteTv";
 import EditHeroCommonSatelliteInternet from "./pages/SatelliteInternet/EditHeroCommonSatelliteInternet";
 import EditContentSatelliteInternet from "./pages/SatelliteInternet/EditContentSatelliteInternet";
+import AllPages from "./pages/AllPages";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -164,7 +166,7 @@ function App() {
     </div>
   );
   function ProtectedDashboard() {
-    return <Dashboard />;
+    return <AllPages />;
   }
 }
 export default App;

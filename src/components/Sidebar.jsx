@@ -5,10 +5,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
-  Paper,
-  Grid,
-  Button,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assests/header-Logo.png";
@@ -17,10 +13,8 @@ import Home from "@mui/icons-material/Home";
 import Room from "@mui/icons-material/Room";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ExitToApp from "@mui/icons-material/ExitToApp";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import { styled } from "@mui/material/styles"; // Import styled from v5import { AccountCircle, ExitToApp, Home, Room } from "@mui/icons-material";
-import { Dashboard } from "@mui/icons-material";
-import Avatar from "../assests/avatar.png";
+
 const drawerWidth = 240;
 
 const useStyles = styled((theme) => ({
@@ -75,49 +69,43 @@ function VerticalNavbar() {
           {/* End Logo */}
         </div>
         <List>
-          {/* <ListItem button>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            <Link to="/dashboard">
-              <ListItemText primary="Dashboard" />
-            </Link>
-          </ListItem> */}
-          <ListItem button>
-            <ListItemIcon>
-              <Home />
-            </ListItemIcon>
-            <Link to="/pages">
-              <ListItemText primary="Pages" />
-            </Link>
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <Room />
-            </ListItemIcon>
-            <Link to="/zipcode">
-              <ListItemText primary="Add Zip Code" />
-            </Link>
-          </ListItem>
-
-          <ListItem button>
-            <ListItemIcon>
-              <Room />
-            </ListItemIcon>
-            <Link to="/update_privoder">
-              <ListItemText primary="Update Zip Code" />
-            </Link>
-          </ListItem>
-
-          {user.role === "admin" && (
+          <Link to="/pages">
             <ListItem button>
               <ListItemIcon>
-                <AccountCircle />
+                <Home />
               </ListItemIcon>
-              <Link to="/user">
-                <ListItemText primary="User" />
-              </Link>
+              <ListItemText primary="Pages" />
             </ListItem>
+          </Link>
+          <Link to="/zipcode">
+            <ListItem button>
+              <ListItemIcon>
+                <Room />
+              </ListItemIcon>
+
+              <ListItemText primary="Add Zip Code" />
+            </ListItem>
+          </Link>
+          <Link to="/update_privoder">
+            <ListItem button>
+              <ListItemIcon>
+                <Room />
+              </ListItemIcon>
+
+              <ListItemText primary="Update Zip Code" />
+            </ListItem>
+          </Link>
+
+          {user.role === "admin" && (
+            <Link to="/user">
+              <ListItem button>
+                <ListItemIcon>
+                  <AccountCircle />
+                </ListItemIcon>
+
+                <ListItemText primary="User" />
+              </ListItem>
+            </Link>
           )}
 
           <ListItem button onClick={handleLogout}>
@@ -127,7 +115,7 @@ function VerticalNavbar() {
             <ListItemText primary="Logout" />
           </ListItem>
         </List>
-        <div className="UserWidget">
+        {/* <div className="UserWidget">
           <div className="leftside">
             <img src={Avatar} alt="Avater" />
           </div>
@@ -135,7 +123,7 @@ function VerticalNavbar() {
             <h3>Haseeb Irfan</h3>
             <h4>Admin</h4>
           </div>
-        </div>
+        </div> */}
       </Drawer>
     </div>
   );

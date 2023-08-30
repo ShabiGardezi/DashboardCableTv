@@ -6,9 +6,9 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import VerticalNavbar from "../components/Sidebar";
-import HeaderCommon from "../pages/HeaderCommon";
-import "../styles/MainSectionEditor.css";
+import VerticalNavbar from "../../components/Sidebar";
+import HeaderCommon from "../HeaderCommon";
+import "../../styles/MainSectionEditor.css";
 const EditHeroSection = () => {
   const [formData, setFormData] = useState({
     title: "",

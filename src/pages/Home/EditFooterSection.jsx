@@ -5,11 +5,9 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import VerticalNavbar from "../components/Sidebar";
-import HeaderCommon from "../pages/HeaderCommon";
-// import "../styles/EditFooterSection.css";
-import "../styles/MainSectionEditor.css";
+import VerticalNavbar from "../../components/Sidebar";
+import HeaderCommon from "../HeaderCommon";
+import "../../styles/MainSectionEditor.css";
 
 const EditFooterSection = () => {
   const [formData, setFormData] = useState({
@@ -26,10 +24,6 @@ const EditFooterSection = () => {
   const [data, setData] = useState({
     footer_text: "Home.Footer.footer_text",
   });
-
-  const handleImageUpload = (e) => {
-    // Handle image upload here and set it in formData
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

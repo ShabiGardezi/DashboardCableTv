@@ -5,10 +5,9 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import VerticalNavbar from "../components/Sidebar";
-import HeaderCommon from "./HeaderCommon";
+import VerticalNavbar from "../../components/Sidebar";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-
+import HeaderCommon from "../HeaderCommon";
 // import "../styles/EditServiceSection.css"; // You can create this CSS file
 
 const EditServiceSection = () => {

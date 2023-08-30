@@ -2,6 +2,7 @@ import React from "react";
 import HeaderCommonBG from "../assests/header-bg.png";
 import calender from "../assests/78f5f7ff2e2e338d72cdaf158205ac8d.png";
 import "../styles/HeaderCommon.css";
+
 function HeaderCommon({ title }) {
   const currentDate = new Date();
   const dateTimeString = currentDate.toLocaleString();

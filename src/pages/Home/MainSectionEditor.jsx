@@ -6,9 +6,9 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import VerticalNavbar from "../components/Sidebar";
-import HeaderCommon from "../pages/HeaderCommon";
-import "../styles/MainSectionEditor.css";
+import VerticalNavbar from "../../components/Sidebar";
+import HeaderCommon from "../HeaderCommon";
+import "../../styles/MainSectionEditor.css";
 const MainSectionEditor = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -77,7 +77,6 @@ const MainSectionEditor = () => {
                   margin="normal"
                   variant="outlined"
                   multiline // This enables multiline input
-
                 />
                 <div className="uploadimg">
                   <label>Upload Image:</label>

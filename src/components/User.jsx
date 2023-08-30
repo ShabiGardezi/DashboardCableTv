@@ -3,7 +3,6 @@ import { Container, Typography } from "@mui/material";
 import VerticalNavbar from "./Sidebar";
 import SignUp from "./SignUp";
 import HeaderCommon from "../pages/HeaderCommon";
-
 function User() {
   return (
     <>
