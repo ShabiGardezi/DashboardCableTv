@@ -9,6 +9,8 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
+import { Toaster, toast } from "react-hot-toast";
+import axios from "axios";
 const MainSectionEditor = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -35,12 +37,32 @@ const MainSectionEditor = () => {
     // Handle image upload here and set it in formData
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await axios.post(`http://localhost:5000/api/update/website`, {
+        mongoObj: {
+          title: data.title,
+          subtitle: data.subtitle,
+          main_content: data.main_content,
+        },
+        data: {
+          title: formData.title,
+          subtitle: formData.subtitle,
+          main_content: formData.main_content,
+        },
+      });
+
+      toast("successfully uploaded");
+    } catch (error) {
+      toast("Error Occured");
+      console.log(error);
+    }
   };
 
   return (
     <>
+      <Toaster />
       <VerticalNavbar />
       <HeaderCommon title="Edit Home Page Main Section" />
       <Container>
