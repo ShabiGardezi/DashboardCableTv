@@ -27,10 +27,26 @@ const HeroCommonContactUs = () => {
     description: "ContactUs.HeroCommon.description",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  };
+    try {
+      await axios.post(`http://localhost:5000/api/update/website`, {
+        mongoObj: {
+          heading: data.heading,
+          description: data.description,
+        },
+        data: {
+          heading: formData.heading,
+          description: formData.description,
+        },
+      });
 
+      toast("successfully uploaded");
+    } catch (error) {
+      toast("Error Occured");
+      console.log(error);
+    }
+  };
   return (
     <>
       <VerticalNavbar />

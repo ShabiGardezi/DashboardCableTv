@@ -5,7 +5,6 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
@@ -27,12 +26,25 @@ const EditHeroSection = () => {
     description: "ServiceProviders.HeroCommon.description",
   });
 
-  const handleImageUpload = (e) => {
-    // Handle image upload here and set it in formData
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await axios.post(`http://localhost:5000/api/update/website`, {
+        mongoObj: {
+          heading: data.heading,
+          description: data.description,
+        },
+        data: {
+          heading: formData.heading,
+          description: formData.description,
+        },
+      });
+
+      toast("successfully uploaded");
+    } catch (error) {
+      toast("Error Occured");
+      console.log(error);
+    }
   };
 
   return (

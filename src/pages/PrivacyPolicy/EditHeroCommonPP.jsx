@@ -8,6 +8,9 @@ import Button from "@mui/material/Button";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
+import axios from "axios";
+import { Toaster, toast } from "react-hot-toast";
+
 const EditHeroCommonPrivacyPolicy = () => {
   const [formData, setFormData] = useState({
     heading: "",
@@ -26,8 +29,25 @@ const EditHeroCommonPrivacyPolicy = () => {
     description: "PrivacyPolicy.HeroCommon.description",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await axios.post(`http://localhost:5000/api/update/website`, {
+        mongoObj: {
+          heading: data.heading,
+          description: data.description,
+        },
+        data: {
+          heading: formData.heading,
+          description: formData.description,
+        },
+      });
+
+      toast("successfully uploaded");
+    } catch (error) {
+      toast("Error Occured");
+      console.log(error);
+    }
   };
 
   return (

@@ -31,8 +31,29 @@ const EditContentCableInternet = () => {
     imageSrc: "CableInternet_Section.CableInternet.imageSrc",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await axios.post(`http://localhost:5000/api/update/website`, {
+        mongoObj: {
+          title: data.title,
+          heading: data.heading,
+          description: data.description,
+          imageSrc: data.imageSrc,
+        },
+        data: {
+          title: formData.title,
+          heading: formData.heading,
+          description: formData.description,
+          imageSrc: data.imageSrc,
+        },
+      });
+
+      toast("successfully uploaded");
+    } catch (error) {
+      toast("Error Occured");
+      console.log(error);
+    }
   };
   const handleImageUpload = (e) => {
     // Handle image upload here and set it in formData

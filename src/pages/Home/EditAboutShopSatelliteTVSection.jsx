@@ -8,30 +8,68 @@ import Button from "@mui/material/Button";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import axios from "axios";
+import { Toaster, toast } from "react-hot-toast";
 
 // import "../styles/EditAboutShopSatelliteTVSection.css"; // You can create this CSS file
 
 const EditAboutShopSatelliteTVSection = () => {
   // Define the initial state based on the provided object
-  const initialAboutShopSatelliteTVState = {
-    title: "About the Satellite",
-    heading: "Our Satellite Mission",
-    description: "Our satellite is on a mission to explore outer space.",
-    fig_1: "Number of Satellites 1",
-    fig_2: "Number of Satellites 2",
-    fig_3: "Number of Satellites 3",
-    aboutshopsatelliteBG: "Background Image for About Shop Satellite Section",
+  const [formData, setFormData] = useState({
+    title: "",
+    heading: "",
+    description: "",
+    fig_1: "",
+    fig_2: "",
+    fig_3: "",
+    aboutshopsatelliteBG: "",
+  });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
+  const [data, setData] = useState({
+    title: "Home.aboutshopsatellitetv.title",
+    heading: "Home.aboutshopsatellitetv.heading",
+    description: "Home.aboutshopsatellitetv.description",
+    fig_1: "Home.aboutshopsatellitetv.fig_1",
+    fig_2: "Home.aboutshopsatellitetv.fig_2",
+    fig_3: "Home.aboutshopsatellitetv.fig_3",
+    aboutshopsatelliteBG: "Home.aboutshopsatellitetv.aboutshopsatelliteBG",
+  });
 
-  // Create state variables for aboutshopsatellitetv section
-  const [aboutShopSatelliteTV, setAboutShopSatelliteTV] = useState(
-    initialAboutShopSatelliteTVState
-  );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post(`http://localhost:5000/api/update/website`, {
+        mongoObj: {
+          title: data.title,
+          heading: data.heading,
+          description: data.description,
+          fig_1: data.fig_1,
+          fig_2: data.fig_2,
+          fig_3: data.fig_3,
+          aboutshopsatelliteBG: data.aboutshopsatelliteBG,
+        },
+        data: {
+          title: formData.title,
+          heading: formData.heading,
+          description: formData.description,
+          fig_1: formData.fig_1,
+          fig_2: formData.fig_2,
+          fig_3: formData.fig_3,
+          aboutshopsatelliteBG: formData.aboutshopsatelliteBG,
+        },
+      });
 
-  // Create functions to update the state of the aboutshopsatellitetv section
-  const handleAboutShopSatelliteTVUpdate = () => {
-    // Update the state with the current values
-    setAboutShopSatelliteTV({ ...aboutShopSatelliteTV });
+      toast("successfully uploaded");
+    } catch (error) {
+      toast("Error Occured");
+      console.log(error);
+    }
   };
   const handleImageUpload = (e) => {
     // Handle image upload here and set it in formData
@@ -48,128 +86,98 @@ const EditAboutShopSatelliteTVSection = () => {
               <Typography variant="h6">
                 Edit About Shop Satellite TV Section
               </Typography>
-
-              {/* Edit About Shop Satellite TV Section Fields */}
-              <TextField
-                fullWidth
-                label="Title"
-                name="title"
-                value={aboutShopSatelliteTV.title}
-                onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
-                    title: e.target.value,
-                  })
-                }
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                fullWidth
-                label="Heading"
-                name="heading"
-                value={aboutShopSatelliteTV.heading}
-                onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
-                    heading: e.target.value,
-                  })
-                }
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                fullWidth
-                label="Description"
-                name="description"
-                value={aboutShopSatelliteTV.description}
-                onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
-                    description: e.target.value,
-                  })
-                }
-                margin="normal"
-                variant="outlined"
-                multiline
-              />
-              <TextField
-                fullWidth
-                label="Figure 1"
-                name="fig_1"
-                value={aboutShopSatelliteTV.fig_1}
-                onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
-                    fig_1: e.target.value,
-                  })
-                }
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                fullWidth
-                label="Figure 2"
-                name="fig_2"
-                value={aboutShopSatelliteTV.fig_2}
-                onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
-                    fig_2: e.target.value,
-                  })
-                }
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                fullWidth
-                label="Figure 3"
-                name="fig_3"
-                value={aboutShopSatelliteTV.fig_3}
-                onChange={(e) =>
-                  setAboutShopSatelliteTV({
-                    ...aboutShopSatelliteTV,
-                    fig_3: e.target.value,
-                  })
-                }
-                margin="normal"
-                variant="outlined"
-              />
-              <div className="uploadimg">
-                <label>Upload Image:</label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  style={{ display: "none" }}
+              <form onSubmit={handleSubmit}>
+                {/* Edit About Shop Satellite TV Section Fields */}
+                <TextField
+                  fullWidth
+                  label="Title"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleInputChange}
+                  margin="normal"
+                  variant="outlined"
                 />
-
-                <Button
-                  variant="contained"
-                  component="label"
-                  startIcon={<CloudUploadIcon />}
-                >
-                  Upload File
+                <TextField
+                  fullWidth
+                  label="Heading"
+                  name="heading"
+                  value={formData.heading}
+                  onChange={handleInputChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  label="Description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  margin="normal"
+                  variant="outlined"
+                  multiline
+                />
+                <TextField
+                  fullWidth
+                  label="Figure 1"
+                  name="fig_1"
+                  value={formData.fig_1}
+                  onChange={handleInputChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  label="Figure 2"
+                  name="fig_2"
+                  value={formData.fig_2}
+                  onChange={handleInputChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  label="Figure 3"
+                  name="fig_3"
+                  value={formData.fig_3}
+                  onChange={handleInputChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <div className="uploadimg">
+                  <label>Upload Image:</label>
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handleImageUpload}
                     style={{ display: "none" }}
                   />
-                </Button>
-              </div>
 
-              {/* Update Button */}
-              <div className="updatebtn">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleAboutShopSatelliteTVUpdate}
-                  style={{ marginTop: "10px" }}
-                >
-                  Update
-                </Button>
-              </div>
+                  <Button
+                    variant="contained"
+                    component="label"
+                    startIcon={<CloudUploadIcon />}
+                  >
+                    Upload File
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      style={{ display: "none" }}
+                    />
+                  </Button>
+                </div>
+
+                {/* Update Button */}
+                <div className="updatebtn">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ marginTop: "10px" }}
+                  >
+                    Update
+                  </Button>
+                </div>
+              </form>
             </Paper>
           </Grid>
         </Grid>

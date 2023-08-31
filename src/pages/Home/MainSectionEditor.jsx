@@ -10,6 +10,7 @@ import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
 import { Toaster, toast } from "react-hot-toast";
+
 import axios from "axios";
 const MainSectionEditor = () => {
   const [formData, setFormData] = useState({
@@ -93,7 +94,7 @@ const MainSectionEditor = () => {
                 <TextField
                   fullWidth
                   label="Main Content"
-                  name="maincontent"
+                  name="main_content"
                   value={formData.main_content}
                   onChange={handleInputChange}
                   margin="normal"

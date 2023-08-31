@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
+import axios from "axios";
+import { Toaster, toast } from "react-hot-toast";
 
 const EditFooterSection = () => {
   const [formData, setFormData] = useState({
@@ -24,9 +26,23 @@ const EditFooterSection = () => {
   const [data, setData] = useState({
     footer_text: "Home.Footer.footer_text",
   });
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await axios.post(`http://localhost:5000/api/update/website`, {
+        mongoObj: {
+          footer_text: data.footer_text,
+        },
+        data: {
+          footer_text: data.footer_text,
+        },
+      });
+
+      toast("successfully uploaded");
+    } catch (error) {
+      toast("Error Occured");
+      console.log(error);
+    }
   };
 
   return (

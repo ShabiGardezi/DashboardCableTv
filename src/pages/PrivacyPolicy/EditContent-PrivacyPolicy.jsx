@@ -8,6 +8,10 @@ import Button from "@mui/material/Button";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
+import { Toaster, toast } from "react-hot-toast";
+
+import axios from "axios";
+
 const EditContentPrivacyPolicy = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -23,13 +27,32 @@ const EditContentPrivacyPolicy = () => {
   };
 
   const [data, setData] = useState({
-    heading: "PrivacyPolicy.Contact_Content.heading",
-    description: "PrivacyPolicy.Contact_Content.description",
-    title: "PrivacyPolicy.Contact_Content.title",
+    title: "PrivacyPolicy.Content_PrivacyPolicy.title",
+    heading: "PrivacyPolicy.Content_PrivacyPolicy.heading",
+    description: "PrivacyPolicy.Content_PrivacyPolicy.description",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await axios.post(`http://localhost:5000/api/update/website`, {
+        mongoObj: {
+          title: data.title,
+          heading: data.heading,
+          description: data.description,
+        },
+        data: {
+          title: formData.title,
+          heading: formData.heading,
+          description: formData.description,
+        },
+      });
+
+      toast("successfully uploaded");
+    } catch (error) {
+      toast("Error Occured");
+      console.log(error);
+    }
   };
 
   return (

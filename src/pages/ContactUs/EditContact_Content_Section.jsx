@@ -29,8 +29,27 @@ const HeroCommonContactUs = () => {
     title: "ContactUs.Contact_Content.title",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await axios.post(`http://localhost:5000/api/update/website`, {
+        mongoObj: {
+          title: data.title,
+          heading: data.heading,
+          description: data.description,
+        },
+        data: {
+          title: formData.title,
+          heading: formData.heading,
+          description: formData.description,
+        },
+      });
+
+      toast("successfully uploaded");
+    } catch (error) {
+      toast("Error Occured");
+      console.log(error);
+    }
   };
 
   return (
@@ -44,6 +63,15 @@ const HeroCommonContactUs = () => {
             <Paper elevation={3} style={{ padding: "20px" }}>
               <Typography variant="h6">Edit Contact Content Section</Typography>
               <form onSubmit={handleSubmit}>
+                <TextField
+                  fullWidth
+                  label="Title"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleInputChange}
+                  margin="normal"
+                  variant="outlined"
+                />
                 <TextField
                   fullWidth
                   label="Heading"
