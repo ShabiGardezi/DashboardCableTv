@@ -25,10 +25,10 @@ const EditContentCableInternet = () => {
   };
 
   const [data, setData] = useState({
-    heading: "CableInternet_Section.CableTv.heading",
-    description: "CableInternet_Section.CableTv.description",
-    title: "CableInternet_Section.CableTv.title",
-    imageSrc: "CableInternet_Section.CableTv.imageSrc",
+    heading: "CableInternet_Section.CableInternet.heading",
+    description: "CableInternet_Section.CableInternet.description",
+    title: "CableInternet_Section.CableInternet.title",
+    imageSrc: "CableInternet_Section.CableInternet.imageSrc",
   });
 
   const handleSubmit = (e) => {

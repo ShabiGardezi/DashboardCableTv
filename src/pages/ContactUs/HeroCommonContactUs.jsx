@@ -27,10 +27,6 @@ const HeroCommonContactUs = () => {
     description: "ContactUs.HeroCommon.description",
   });
 
-  const handleImageUpload = (e) => {
-    // Handle image upload here and set it in formData
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
   };

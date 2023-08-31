@@ -25,10 +25,10 @@ const EditContentSatelliteTV = () => {
   };
 
   const [data, setData] = useState({
-    heading: "SatelliteTv_Section.CableTv.heading",
-    description: "SatelliteTv_Section.CableTv.description",
-    title: "SatelliteTv_Section.CableTv.title",
-    imageSrc: "SatelliteTv_Section.CableTv.imageSrc",
+    heading: "SatelliteTv_Section.SatelliteTv.heading",
+    description: "SatelliteTv_Section.SatelliteTv.description",
+    title: "SatelliteTv_Section.SatelliteTv.title",
+    imageSrc: "SatelliteTv_Section.SatelliteTv.imageSrc",
   });
 
   const handleSubmit = (e) => {

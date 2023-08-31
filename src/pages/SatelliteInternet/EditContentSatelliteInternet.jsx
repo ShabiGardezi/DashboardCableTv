@@ -25,10 +25,10 @@ const EditContentSatelliteInternet = () => {
   };
 
   const [data, setData] = useState({
-    heading: "SatelliteInternet_Section.CableTv.heading",
-    description: "SatelliteInternet_Section.CableTv.description",
-    title: "SatelliteInternet_Section.CableTv.title",
-    imageSrc: "SatelliteInternet_Section.CableTv.imageSrc",
+    heading: "SatelliteInternet_Section.SatelliteInternet.heading",
+    description: "SatelliteInternet_Section.SatelliteInternet.description",
+    title: "SatelliteInternet_Section.SatelliteInternet.title",
+    imageSrc: "SatelliteInternet_Section.SatelliteInternet.imageSrc",
   });
 
   const handleSubmit = (e) => {

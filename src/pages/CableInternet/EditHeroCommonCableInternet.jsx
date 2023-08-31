@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
-const EditContentCableInternet = () => {
+const EditHeroCommonCableInternet = () => {
   const [formData, setFormData] = useState({
     heading: "",
     description: "",
@@ -80,4 +80,4 @@ const EditContentCableInternet = () => {
   );
 };
 
-export default EditContentCableInternet;
+export default EditHeroCommonCableInternet;
