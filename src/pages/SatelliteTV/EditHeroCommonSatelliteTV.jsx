@@ -8,6 +8,9 @@ import Button from "@mui/material/Button";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
+import { Toaster, toast } from "react-hot-toast";
+
+import axios from "axios";
 const EditHeroCommonSatelliteTV = () => {
   const [formData, setFormData] = useState({
     heading: "",

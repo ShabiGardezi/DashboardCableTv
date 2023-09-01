@@ -9,6 +9,9 @@ import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import "../../styles/MainSectionEditor.css";
+import { Toaster, toast } from "react-hot-toast";
+
+import axios from "axios";
 const EditContentSatelliteTV = () => {
   const [formData, setFormData] = useState({
     title: "",

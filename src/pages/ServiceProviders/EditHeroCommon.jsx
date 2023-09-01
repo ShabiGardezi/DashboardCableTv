@@ -7,6 +7,9 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
+import { Toaster, toast } from "react-hot-toast";
+
+import axios from "axios";
 import "../../styles/MainSectionEditor.css";
 const EditHeroSection = () => {
   const [formData, setFormData] = useState({
