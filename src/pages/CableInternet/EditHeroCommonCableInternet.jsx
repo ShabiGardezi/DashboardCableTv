@@ -9,9 +9,13 @@ import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
 import { Toaster, toast } from "react-hot-toast";
+import { LoadingButton } from "@mui/lab";
+import uploadImage from "../../utiles/imageUpload";
 
 import axios from "axios";
 const EditHeroCommonCableInternet = () => {
+  const [loading, setloading] = useState(false);
+
   const [formData, setFormData] = useState({
     heading: "",
     description: "",
@@ -32,6 +36,16 @@ const EditHeroCommonCableInternet = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setloading(true);
+      let imageUrl = "";
+      if (formData.image) {
+        imageUrl = await uploadImage(formData.image);
+
+        setFormData({
+          ...formData,
+          image: "",
+        });
+      }
       await axios.post(`http://localhost:5000/api/update/website`, {
         mongoObj: {
           heading: data.heading,
@@ -43,15 +57,18 @@ const EditHeroCommonCableInternet = () => {
         },
       });
 
-      toast("successfully uploaded");
+      toast.success("successfully uploaded");
     } catch (error) {
-      toast("Error Occured");
+      if (typeof error === "object") toast.error(error.message);
+      else toast.error("Error Occured");
       console.log(error);
     }
+    setloading(false);
   };
 
   return (
     <>
+      <Toaster />
       <VerticalNavbar />
       <HeaderCommon title="CableInternet Page => Hero Common Section" />
       <Container>
@@ -82,14 +99,15 @@ const EditHeroCommonCableInternet = () => {
                 />
 
                 <div className="updatebtn">
-                  <Button
+                  <LoadingButton
+                    loading={loading}
                     variant="contained"
                     color="primary"
                     type="submit"
                     style={{ marginTop: "10px" }}
                   >
                     Update
-                  </Button>
+                  </LoadingButton>
                 </div>
               </form>
             </Paper>

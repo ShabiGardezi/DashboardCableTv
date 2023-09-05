@@ -10,6 +10,8 @@ import HeaderCommon from "../HeaderCommon";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
+import uploadImage from "../../utiles/imageUpload";
+import { LoadingButton } from "@mui/lab";
 
 // import "../styles/EditAboutShopSatelliteTVSection.css"; // You can create this CSS file
 
@@ -40,10 +42,22 @@ const EditAboutShopSatelliteTVSection = () => {
     fig_3: "Home.aboutshopsatellitetv.fig_3",
     aboutshopsatelliteBG: "Home.aboutshopsatellitetv.aboutshopsatelliteBG",
   });
+  const [loading, setloading] = useState(false);
 
   const handleSubmit = async (e) => {
+    console.log("submit");
     e.preventDefault();
     try {
+      setloading(true);
+      let imageUrl = "";
+      if (formData.image) {
+        imageUrl = await uploadImage(formData.image);
+
+        setFormData({
+          ...formData,
+          image: "",
+        });
+      }
       await axios.post(`http://localhost:5000/api/update/website`, {
         mongoObj: {
           title: data.title,
@@ -61,21 +75,28 @@ const EditAboutShopSatelliteTVSection = () => {
           fig_1: formData.fig_1,
           fig_2: formData.fig_2,
           fig_3: formData.fig_3,
-          aboutshopsatelliteBG: formData.aboutshopsatelliteBG,
+          aboutshopsatelliteBG: imageUrl,
         },
       });
 
-      toast("successfully uploaded");
+      toast.success("successfully uploaded");
     } catch (error) {
-      toast("Error Occured");
+      if (typeof error === "object") toast.error(error.message);
+      else toast.error("Error Occured");
       console.log(error);
     }
+    setloading(false);
   };
   const handleImageUpload = (e) => {
     // Handle image upload here and set it in formData
+    setFormData({
+      ...formData,
+      image: e.target.files[0],
+    });
   };
   return (
     <>
+      <Toaster />
       <VerticalNavbar />
       <HeaderCommon title="Edit About Shop Satellite TV Section" />
       <Container>
@@ -169,13 +190,15 @@ const EditAboutShopSatelliteTVSection = () => {
 
                 {/* Update Button */}
                 <div className="updatebtn">
-                  <Button
+                  <LoadingButton
+                    loading={loading}
                     variant="contained"
                     color="primary"
+                    type="submit"
                     style={{ marginTop: "10px" }}
                   >
                     Update
-                  </Button>
+                  </LoadingButton>
                 </div>
               </form>
             </Paper>

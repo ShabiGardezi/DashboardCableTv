@@ -4,12 +4,15 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
+import { Toaster, toast } from "react-hot-toast";
+import { LoadingButton } from "@mui/lab";
+
 const HeroCommonContactUs = () => {
+  const [loading, setloading] = useState(false);
+
   const [formData, setFormData] = useState({
     heading: "",
     description: "",
@@ -45,15 +48,17 @@ const HeroCommonContactUs = () => {
         },
       });
 
-      toast("successfully uploaded");
+      toast.success("successfully uploaded");
     } catch (error) {
-      toast("Error Occured");
+      if (typeof error === "object") toast.error(error.message);
+      else toast.error("Error Occured");
       console.log(error);
     }
+    setloading(false);
   };
-
   return (
     <>
+      <Toaster />
       <VerticalNavbar />
       <HeaderCommon title="ContactUs Page => Contact Content Section" />
       <Container>
@@ -92,14 +97,15 @@ const HeroCommonContactUs = () => {
                   multiline // This enables multiline input
                 />
                 <div className="updatebtn">
-                  <Button
+                  <LoadingButton
+                    loading={loading}
                     variant="contained"
                     color="primary"
                     type="submit"
                     style={{ marginTop: "10px" }}
                   >
                     Update
-                  </Button>
+                  </LoadingButton>
                 </div>
               </form>
             </Paper>

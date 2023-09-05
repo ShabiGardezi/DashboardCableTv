@@ -4,15 +4,16 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
 import { Toaster, toast } from "react-hot-toast";
-
+import { LoadingButton } from "@mui/lab";
 import axios from "axios";
 
 const EditContentPrivacyPolicy = () => {
+  const [loading, setloading] = useState(false);
+
   const [formData, setFormData] = useState({
     title: "",
     heading: "",
@@ -35,6 +36,7 @@ const EditContentPrivacyPolicy = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setloading(true);
       await axios.post(`http://localhost:5000/api/update/website`, {
         mongoObj: {
           title: data.title,
@@ -48,15 +50,18 @@ const EditContentPrivacyPolicy = () => {
         },
       });
 
-      toast("successfully uploaded");
+      toast.success("successfully uploaded");
     } catch (error) {
-      toast("Error Occured");
+      if (typeof error === "object") toast.error(error.message);
+      else toast.error("Error Occured");
       console.log(error);
     }
+    setloading(false);
   };
-
   return (
     <>
+      {" "}
+      <Toaster />
       <VerticalNavbar />
       <HeaderCommon title="Privacy Policy Page => Contact_Content Section" />
       <Container>
@@ -97,14 +102,15 @@ const EditContentPrivacyPolicy = () => {
                 />
 
                 <div className="updatebtn">
-                  <Button
+                  <LoadingButton
+                    loading={loading}
                     variant="contained"
                     color="primary"
                     type="submit"
                     style={{ marginTop: "10px" }}
                   >
                     Update
-                  </Button>
+                  </LoadingButton>
                 </div>
               </form>
             </Paper>

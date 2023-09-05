@@ -4,14 +4,15 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import { Toaster, toast } from "react-hot-toast";
+import { LoadingButton } from "@mui/lab";
 
 import axios from "axios";
 import "../../styles/MainSectionEditor.css";
 const EditHeroSection = () => {
+  const [loading, setloading] = useState(false);
   const [formData, setFormData] = useState({
     heading: "",
     description: "",
@@ -32,6 +33,8 @@ const EditHeroSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setloading(true);
+
       await axios.post(`http://localhost:5000/api/update/website`, {
         mongoObj: {
           heading: data.heading,
@@ -43,15 +46,17 @@ const EditHeroSection = () => {
         },
       });
 
-      toast("successfully uploaded");
+      toast.success("successfully uploaded");
     } catch (error) {
-      toast("Error Occured");
+      if (typeof error === "object") toast.error(error.message);
+      else toast.error("Error Occured");
       console.log(error);
     }
+    setloading(false);
   };
-
   return (
     <>
+      <Toaster />
       <VerticalNavbar />
       <HeaderCommon title="Service Provider Page => Hero Common Section" />
       <Container>
@@ -82,14 +87,15 @@ const EditHeroSection = () => {
                 />
 
                 <div className="updatebtn">
-                  <Button
+                  <LoadingButton
+                    loading={loading}
                     variant="contained"
                     color="primary"
                     type="submit"
                     style={{ marginTop: "10px" }}
                   >
                     Update
-                  </Button>
+                  </LoadingButton>
                 </div>
               </form>
             </Paper>

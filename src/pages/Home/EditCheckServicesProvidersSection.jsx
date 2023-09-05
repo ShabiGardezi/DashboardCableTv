@@ -10,6 +10,9 @@ import HeaderCommon from "../HeaderCommon";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
+import uploadImage from "../../utiles/imageUpload";
+import { LoadingButton } from "@mui/lab";
+
 // import "../styles/EditCheckServicesProvidersSection.css"; // You can create this CSS file
 
 const EditCheckServicesProvidersSection = () => {
@@ -40,10 +43,21 @@ const EditCheckServicesProvidersSection = () => {
     aboutshopsatelliteBG:
       "Home.checkservicesproviders.CheckServicesProvidersBG",
   });
+  const [loading, setloading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setloading(true);
+      let imageUrl = "";
+      if (formData.image) {
+        imageUrl = await uploadImage(formData.image);
+
+        setFormData({
+          ...formData,
+          image: "",
+        });
+      }
       await axios.post(`http://localhost:5000/api/update/website`, {
         mongoObj: {
           title: data.title,
@@ -65,17 +79,24 @@ const EditCheckServicesProvidersSection = () => {
         },
       });
 
-      toast("successfully uploaded");
+      toast.success("successfully uploaded");
     } catch (error) {
-      toast("Error Occured");
+      if (typeof error === "object") toast.error(error.message);
+      else toast.error("Error Occured");
       console.log(error);
     }
+    setloading(false);
   };
   const handleImageUpload = (e) => {
     // Handle image upload here and set it in formData
+    setFormData({
+      ...formData,
+      image: e.target.files[0],
+    });
   };
   return (
     <>
+      <Toaster />
       <VerticalNavbar />
       <HeaderCommon title="Edit About Shop Satellite TV Section" />
       <Container>
@@ -169,13 +190,15 @@ const EditCheckServicesProvidersSection = () => {
 
                 {/* Update Button */}
                 <div className="updatebtn">
-                  <Button
+                  <LoadingButton
+                    loading={loading}
                     variant="contained"
                     color="primary"
+                    type="submit"
                     style={{ marginTop: "10px" }}
                   >
                     Update
-                  </Button>
+                  </LoadingButton>
                 </div>
               </form>
             </Paper>

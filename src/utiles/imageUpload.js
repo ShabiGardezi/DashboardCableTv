@@ -26,7 +26,7 @@ const uploadImage = async (file) => {
     }
   );
   console.log("cloudinaryResponse", cloudinaryResponse);
-  if (cloudinaryResponse.status == 200) {
+  if (cloudinaryResponse.status === 200) {
     return cloudinaryResponse.data.url;
   } else {
     throw new Error("error while uploading image");
