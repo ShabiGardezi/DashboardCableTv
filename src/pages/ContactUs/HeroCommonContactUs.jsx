@@ -59,7 +59,7 @@ const HeroCommonContactUs = () => {
     <>
       <Toaster />
       <VerticalNavbar />
-      <HeaderCommon title="ContactUs Page => Hero Common Section" />
+      <HeaderCommon title="ContactUs Page => hHero Common Section" />
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}></Grid>

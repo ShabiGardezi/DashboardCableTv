@@ -20,7 +20,7 @@ const EditContentSatelliteInternet = () => {
     title: "",
     heading: "",
     description: "",
-    imageSrc: "",
+    image: "",
   });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +34,7 @@ const EditContentSatelliteInternet = () => {
     heading: "SatelliteInternet_Section.SatelliteInternet.heading",
     description: "SatelliteInternet_Section.SatelliteInternet.description",
     title: "SatelliteInternet_Section.SatelliteInternet.title",
-    imageSrc: "SatelliteInternet_Section.SatelliteInternet.imageSrc",
+    image: "SatelliteInternet_Section.SatelliteInternet.image",
   });
 
   const handleSubmit = async (e) => {
@@ -55,13 +55,13 @@ const EditContentSatelliteInternet = () => {
           title: data.title,
           heading: data.heading,
           description: data.description,
-          imageSrc: data.imageSrc,
+          image: data.image,
         },
         data: {
           title: formData.title,
           heading: formData.heading,
           description: formData.description,
-          imageSrc: data.imageSrc,
+          image: imageUrl,
         },
       });
 

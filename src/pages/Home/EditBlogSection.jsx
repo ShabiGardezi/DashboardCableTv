@@ -12,6 +12,9 @@ import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
 import "../../styles/EditBlogSection.css";
+import axios from "axios";
+import { toast, Toaster } from "react-hot-toast";
+
 const EditBlogSection = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -32,53 +35,37 @@ const EditBlogSection = () => {
     heading: "Home.blogs.heading",
     description: "Home.blogs.description",
   });
+  const [loading, setloading] = useState(false);
 
-  // STATES FOR CARDS ISNIDE BLOG SECTION
-  const [blogsData, setBlogsData] = useState({
-    card_1: {
-      img1: "Home.blogs.card_1.img1",
-      heading: "Home.blogs.card_1.heading",
-      description: "Home.blogs.card_1.description",
-    },
-    card_2: {
-      img2: "Home.blogs.card_2.img2",
-      heading: "Home.blogs.card_2.heading",
-      description: "Home.blogs.card_2.description",
-    },
-    card_3: {
-      img3: "Home.blogs.card_3.img3",
-      heading: "Home.blogs.card_3.heading",
-      description: "Home.blogs.card_3.description",
-    },
-  });
-  // State for each card
-  const [card1Data, setCard1Data] = useState(blogsData.card_1);
-  const [card2Data, setCard2Data] = useState(blogsData.card_2);
-  const [card3Data, setCard3Data] = useState(blogsData.card_3);
-
-  // Functions to update card data
-  const handleCard1Update = (newData) => {
-    setCard1Data({ ...card1Data, ...newData });
-  };
-
-  const handleCard2Update = (newData) => {
-    setCard2Data({ ...card2Data, ...newData });
-  };
-
-  const handleCard3Update = (newData) => {
-    setCard3Data({ ...card3Data, ...newData });
-  };
-
-  const handleImageUpload = (e) => {
-    // Handle image upload here and set it in formData
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  };
+    try {
+      setloading(true);
 
+      await axios.post(`http://localhost:5000/api/update/website`, {
+        mongoObj: {
+          title: data.title,
+          heading: data.heading,
+          description: data.description,
+        },
+        data: {
+          title: formData.title,
+          heading: formData.heading,
+          description: formData.description,
+        },
+      });
+
+      toast.success("successfully uploaded");
+    } catch (error) {
+      if (typeof error === "object") toast.error(error.message);
+      else toast.error("Error Occured");
+      console.log(error);
+    }
+    setloading(false);
+  };
   return (
     <>
+      <Toaster />
       <VerticalNavbar />
       <HeaderCommon title="Edit Home Page Blog Section" />
       <Container>
@@ -129,164 +116,6 @@ const EditBlogSection = () => {
                 </div>
               </form>
             </Paper>
-            <Card>
-              <Typography variant="h6">Edit Blog Card-1 </Typography>
-
-              <CardContent>
-                <TextField
-                  fullWidth
-                  label="Card Heading 1"
-                  variant="outlined"
-                  margin="normal"
-                />
-                <TextField
-                  fullWidth
-                  label="Card Description 1"
-                  variant="outlined"
-                  margin="normal"
-                  multiline
-                />
-                <div className="uploadimg">
-                  <label>Upload Image:</label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    style={{ display: "none" }}
-                  />
-
-                  <Button
-                    variant="contained"
-                    component="label"
-                    startIcon={<CloudUploadIcon />}
-                  >
-                    Upload File
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      style={{ display: "none" }}
-                    />
-                  </Button>
-                </div>
-                <div className="updatebtn">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    style={{ marginTop: "10px" }}
-                  >
-                    Update
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <Typography variant="h6">Edit Blog Card-2 </Typography>
-
-              <CardContent>
-                <TextField
-                  fullWidth
-                  label="Card Heading 2"
-                  variant="outlined"
-                  margin="normal"
-                />
-                <TextField
-                  fullWidth
-                  label="Card Description 2"
-                  variant="outlined"
-                  margin="normal"
-                  multiline
-                />
-                <div className="uploadimg">
-                  <label>Upload Image:</label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    style={{ display: "none" }}
-                  />
-
-                  <Button
-                    variant="contained"
-                    component="label"
-                    startIcon={<CloudUploadIcon />}
-                  >
-                    Upload File
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      style={{ display: "none" }}
-                    />
-                  </Button>
-                </div>
-                <div className="updatebtn">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    style={{ marginTop: "10px" }}
-                  >
-                    Update
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <Typography variant="h6">Edit Blog Card-3 </Typography>
-
-              <CardContent>
-                <TextField
-                  fullWidth
-                  label="Card Heading 3"
-                  variant="outlined"
-                  margin="normal"
-                />
-                <TextField
-                  fullWidth
-                  label="Card Description 3"
-                  variant="outlined"
-                  margin="normal"
-                  multiline
-                />
-                <div className="uploadimg">
-                  <label>Upload Image:</label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    style={{ display: "none" }}
-                  />
-
-                  <Button
-                    variant="contained"
-                    component="label"
-                    startIcon={<CloudUploadIcon />}
-                  >
-                    Upload File
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      style={{ display: "none" }}
-                    />
-                  </Button>
-                </div>
-                <div className="updatebtn">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    style={{ marginTop: "10px" }}
-                  >
-                    Update
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
           </Grid>
         </Grid>
       </Container>

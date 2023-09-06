@@ -20,7 +20,7 @@ const EditContentCableInternet = () => {
     title: "",
     heading: "",
     description: "",
-    imageSrc: "",
+    image: "",
   });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +34,7 @@ const EditContentCableInternet = () => {
     heading: "CableInternet_Section.CableInternet.heading",
     description: "CableInternet_Section.CableInternet.description",
     title: "CableInternet_Section.CableInternet.title",
-    imageSrc: "CableInternet_Section.CableInternet.imageSrc",
+    image: "CableInternet_Section.CableInternet.image",
   });
 
   const handleSubmit = async (e) => {
@@ -55,13 +55,13 @@ const EditContentCableInternet = () => {
           title: data.title,
           heading: data.heading,
           description: data.description,
-          imageSrc: data.imageSrc,
+          image: data.image,
         },
         data: {
           title: formData.title,
           heading: formData.heading,
           description: formData.description,
-          imageSrc: data.imageSrc,
+          image: imageUrl,
         },
       });
 

@@ -20,7 +20,7 @@ const EditContentCableTV = () => {
     title: "",
     heading: "",
     description: "",
-    imageSrc: "",
+    image: "",
   });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,10 +31,10 @@ const EditContentCableTV = () => {
   };
 
   const [data, setData] = useState({
+    title: "CableTv_Section.CableTv.title",
     heading: "CableTv_Section.CableTv.heading",
     description: "CableTv_Section.CableTv.description",
-    title: "CableTv_Section.CableTv.title",
-    imageSrc: "CableTv_Section.CableTv.imageSrc",
+    image: "CableTv_Section.CableTv.image",
   });
 
   const handleSubmit = async (e) => {
@@ -55,13 +55,13 @@ const EditContentCableTV = () => {
           title: data.title,
           heading: data.heading,
           description: data.description,
-          imageSrc: data.imageSrc,
+          image: data.image,
         },
         data: {
           title: formData.title,
           heading: formData.heading,
           description: formData.description,
-          imageSrc: data.imageSrc,
+          image: imageUrl,
         },
       });
 

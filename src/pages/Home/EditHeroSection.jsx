@@ -21,7 +21,7 @@ const EditHeroSection = () => {
     title: "",
     heading: "",
     description: "",
-    HeroBG: "",
+    image: "",
   });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +35,7 @@ const EditHeroSection = () => {
     title: "Home.hero_section.title",
     heading: "Home.hero_section.heading",
     description: "Home.hero_section.description",
-    HeroBG: "Home.hero_section.MainBG",
+    image: "Home.hero_section.image",
   });
 
   const handleSubmit = async (e) => {
@@ -54,15 +54,15 @@ const EditHeroSection = () => {
       await axios.post(`http://localhost:5000/api/update/website`, {
         mongoObj: {
           title: data.title,
-          subtitle: data.subtitle,
-          main_content: data.main_content,
-          HeroBG: data.HeroBG,
+          heading: data.heading,
+          description: data.description,
+          image: data.image,
         },
         data: {
           title: formData.title,
-          subtitle: formData.subtitle,
-          main_content: formData.main_content,
-          HeroBG: formData.HeroBG,
+          heading: formData.heading,
+          description: formData.description,
+          image: imageUrl,
         },
       });
 
@@ -86,13 +86,13 @@ const EditHeroSection = () => {
     <>
       <Toaster />
       <VerticalNavbar />
-      <HeaderCommon title="Edit Home Page Hero Section" />
+      <HeaderCommon title="Home Page => Hero Section" />
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}></Grid>
           <Grid item xs={12} md={9}>
             <Paper elevation={3} style={{ padding: "20px" }}>
-              <Typography variant="h6">Edit Main Section</Typography>
+              <Typography variant="h6">Edit Hero Section</Typography>
               <form onSubmit={handleSubmit}>
                 <TextField
                   fullWidth

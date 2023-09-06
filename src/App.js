@@ -30,6 +30,14 @@ import EditContentSatelliteTV from "./pages/SatelliteTV/EditContentSatelliteTv";
 import EditHeroCommonSatelliteInternet from "./pages/SatelliteInternet/EditHeroCommonSatelliteInternet";
 import EditContentSatelliteInternet from "./pages/SatelliteInternet/EditContentSatelliteInternet";
 import AllPages from "./pages/AllPages";
+import SliderCableTv from "./pages/Home/SliderCableTv";
+import SliderCableInternet from "./pages/Home/SliderCableInternet";
+import SliderSatelliteTv from "./pages/Home/SliderSatelliteTv";
+import SliderSatelliteInternet from "./pages/Home/SliderSatelliteInternet";
+import BlogCard1 from "./pages/Home/BlogCard1";
+import BlogCard2 from "./pages/Home/BlogCard2";
+import BlogCard3 from "./pages/Home/BlogCard3";
+import EditContact_Content_Section from "./pages/ContactUs/EditContact_Content_Section";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -68,6 +76,29 @@ function App() {
           Component={EditFooterSection}
         ></Route>
         <Route
+          path="/pages/slider_cabletv"
+          exact
+          Component={SliderCableTv}
+        ></Route>
+        <Route
+          path="/pages/slider_cableinternet"
+          exact
+          Component={SliderCableInternet}
+        ></Route>
+        <Route
+          path="/pages/slider_satellitetv"
+          exact
+          Component={SliderSatelliteTv}
+        ></Route>
+        <Route
+          path="/pages/slider_satelliteinternet"
+          exact
+          Component={SliderSatelliteInternet}
+        ></Route>
+        <Route path="/pages/blog_card1" exact Component={BlogCard1} />
+        <Route path="/pages/blog_card2" exact Component={BlogCard2} />
+        <Route path="/pages/blog_card3" exact Component={BlogCard3} />
+        <Route
           path="/pages/aboutshopsatellite_section"
           exact
           Component={EditAboutShopSatelliteTVSection}
@@ -85,7 +116,7 @@ function App() {
         <Route
           path="/pages/contactus/contact_content"
           exact
-          Component={HeroCommonContactUs}
+          Component={EditContact_Content_Section}
         ></Route>
         <Route
           path="/pages/aboutus/hero_common"

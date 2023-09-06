@@ -9,14 +9,14 @@ import HeaderCommon from "../HeaderCommon";
 import "../../styles/MainSectionEditor.css";
 import { Toaster, toast } from "react-hot-toast";
 import { LoadingButton } from "@mui/lab";
-
-const HeroCommonContactUs = () => {
+import axios from "axios";
+const EditContact_Content_Section = () => {
   const [loading, setloading] = useState(false);
 
   const [formData, setFormData] = useState({
+    title: "",
     heading: "",
     description: "",
-    title: "",
   });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,9 +27,9 @@ const HeroCommonContactUs = () => {
   };
 
   const [data, setData] = useState({
+    title: "ContactUs.Contact_Content.title",
     heading: "ContactUs.Contact_Content.heading",
     description: "ContactUs.Contact_Content.description",
-    title: "ContactUs.Contact_Content.title",
   });
 
   const handleSubmit = async (e) => {
@@ -60,7 +60,7 @@ const HeroCommonContactUs = () => {
     <>
       <Toaster />
       <VerticalNavbar />
-      <HeaderCommon title="ContactUs Page => Contact Content Section" />
+      <HeaderCommon title="ContactUs Page => Contact Section" />
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}></Grid>
@@ -116,4 +116,4 @@ const HeroCommonContactUs = () => {
   );
 };
 
-export default HeroCommonContactUs;
+export default EditContact_Content_Section;

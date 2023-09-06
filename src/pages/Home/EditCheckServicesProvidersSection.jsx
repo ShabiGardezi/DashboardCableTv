@@ -40,8 +40,7 @@ const EditCheckServicesProvidersSection = () => {
     fig_1: "Home.checkservicesproviders.fig_1",
     fig_2: "Home.checkservicesproviders.fig_2",
     fig_3: "Home.checkservicesproviders.fig_3",
-    aboutshopsatelliteBG:
-      "Home.checkservicesproviders.CheckServicesProvidersBG",
+    image: "Home.checkservicesproviders.image",
   });
   const [loading, setloading] = useState(false);
 
@@ -66,7 +65,7 @@ const EditCheckServicesProvidersSection = () => {
           fig_1: data.fig_1,
           fig_2: data.fig_2,
           fig_3: data.fig_3,
-          CheckServicesProvidersBG: data.CheckServicesProvidersBG,
+          image: data.image,
         },
         data: {
           title: formData.title,
@@ -75,7 +74,7 @@ const EditCheckServicesProvidersSection = () => {
           fig_1: formData.fig_1,
           fig_2: formData.fig_2,
           fig_3: formData.fig_3,
-          CheckServicesProvidersBG: formData.CheckServicesProvidersBG,
+          image: imageUrl,
         },
       });
 
@@ -98,14 +97,14 @@ const EditCheckServicesProvidersSection = () => {
     <>
       <Toaster />
       <VerticalNavbar />
-      <HeaderCommon title="Edit About Shop Satellite TV Section" />
+      <HeaderCommon title="Edit Check Service Provider Section" />
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}></Grid>
           <Grid item xs={12} md={9}>
             <Paper elevation={3} style={{ padding: "20px" }}>
               <Typography variant="h6">
-                Edit About Shop Satellite TV Section
+                Check Service Provider Section
               </Typography>
               <form onSubmit={handleSubmit}>
                 {/* Edit About Shop Satellite TV Section Fields */}

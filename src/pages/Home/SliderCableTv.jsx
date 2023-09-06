@@ -5,20 +5,17 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import "../../styles/MainSectionEditor.css";
 import { Toaster, toast } from "react-hot-toast";
+
+import axios from "axios";
 import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
-import axios from "axios";
-const EditContentSatelliteTV = () => {
-  const [loading, setloading] = useState(false);
-
+const SliderCableTv = () => {
   const [formData, setFormData] = useState({
     title: "",
-    heading: "",
     description: "",
     image: "",
   });
@@ -31,11 +28,19 @@ const EditContentSatelliteTV = () => {
   };
 
   const [data, setData] = useState({
-    heading: "SatelliteTv_Section.SatelliteTv.heading",
-    description: "SatelliteTv_Section.SatelliteTv.description",
-    title: "SatelliteTv_Section.SatelliteTv.title",
-    image: "SatelliteTv_Section.SatelliteTv.image",
+    title: "Home.service_cabletv_slider.title",
+    description: "Home.service_cabletv_slider.description",
+    image: "Home.service_cabletv_slider.image",
   });
+  const [loading, setloading] = useState(false);
+
+  const handleImageUpload = (e) => {
+    // Handle image upload here and set it in formData
+    setFormData({
+      ...formData,
+      image: e.target.files[0],
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,13 +58,11 @@ const EditContentSatelliteTV = () => {
       await axios.post(`http://localhost:5000/api/update/website`, {
         mongoObj: {
           title: data.title,
-          heading: data.heading,
           description: data.description,
           image: data.image,
         },
         data: {
           title: formData.title,
-          heading: formData.heading,
           description: formData.description,
           image: imageUrl,
         },
@@ -73,25 +76,18 @@ const EditContentSatelliteTV = () => {
     }
     setloading(false);
   };
-  const handleImageUpload = (e) => {
-    // Handle image upload here and set it in formData
-    setFormData({
-      ...formData,
-      image: e.target.files[0],
-    });
-  };
+
   return (
     <>
-      {" "}
       <Toaster />
       <VerticalNavbar />
-      <HeaderCommon title="SatelliteTv Page => Content Section" />
+      <HeaderCommon title="Edit Services => CableTV Slider" />
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}></Grid>
           <Grid item xs={12} md={9}>
             <Paper elevation={3} style={{ padding: "20px" }}>
-              <Typography variant="h6">Edit Contact_Content Section</Typography>
+              <Typography variant="h6">Edit CableTV Slider</Typography>
               <form onSubmit={handleSubmit}>
                 <TextField
                   fullWidth
@@ -101,28 +97,16 @@ const EditContentSatelliteTV = () => {
                   onChange={handleInputChange}
                   margin="normal"
                   variant="outlined"
-                  multiline // This enables multiline input
-                />
-                <TextField
-                  fullWidth
-                  label="Heading"
-                  name="heading"
-                  value={formData.heading}
-                  onChange={handleInputChange}
-                  margin="normal"
-                  variant="outlined"
                 />
                 <TextField
                   fullWidth
                   label="Description"
                   name="description"
-                  value={formData.description}
+                  value={formData.subtitle}
                   onChange={handleInputChange}
                   margin="normal"
                   variant="outlined"
-                  multiline // This enables multiline input
                 />
-
                 <div className="uploadimg">
                   <label>Upload Image:</label>
                   <input
@@ -166,4 +150,4 @@ const EditContentSatelliteTV = () => {
   );
 };
 
-export default EditContentSatelliteTV;
+export default SliderCableTv;

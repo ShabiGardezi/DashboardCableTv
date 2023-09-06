@@ -8,7 +8,6 @@ import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import { Toaster, toast } from "react-hot-toast";
 import { LoadingButton } from "@mui/lab";
-
 import axios from "axios";
 import "../../styles/MainSectionEditor.css";
 const EditHeroSection = () => {

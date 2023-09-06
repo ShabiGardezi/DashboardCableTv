@@ -81,6 +81,62 @@ const AllPages = () => {
                     </button>
                   </Link>
                 </li>
+                <li>
+                  <span>Service Slider Cable TV</span>
+                  <Link to="slider_cabletv">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
+                </li>{" "}
+                <li>
+                  <span>Service Slider Cable Internet</span>
+                  <Link to="slider_cableinternet">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <span>Service Slider Satellite Tv</span>
+                  <Link to="slider_satellitetv">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <span>Service Slider Satellite Int</span>
+                  <Link to="slider_satelliteinternet">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
+                </li>{" "}
+                <li>
+                  <span>Blog Card 1</span>
+                  <Link to="blog_card1">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <span>Blog Card 2</span>
+                  <Link to="blog_card2">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <span>Blog Card 3</span>
+                  <Link to="blog_card3">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -170,7 +226,6 @@ const AllPages = () => {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              {" "}
               <ul>
                 <li>
                   <span>Hero Common</span>
