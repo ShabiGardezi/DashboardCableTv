@@ -13,7 +13,8 @@ import Home from "@mui/icons-material/Home";
 import Room from "@mui/icons-material/Room";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ExitToApp from "@mui/icons-material/ExitToApp";
-import { styled } from "@mui/material/styles"; // Import styled from v5import { AccountCircle, ExitToApp, Home, Room } from "@mui/icons-material";
+// import { styled } from "@mui/material/styles"; // Import styled from v5import { AccountCircle, ExitToApp, Home, Room } from "@mui/icons-material";
+import { styled } from "@mui/material";
 
 const drawerWidth = 240;
 
