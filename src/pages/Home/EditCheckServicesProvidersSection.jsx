@@ -13,7 +13,6 @@ import axios from "axios";
 import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
 
-// import "../styles/EditCheckServicesProvidersSection.css"; // You can create this CSS file
 
 const EditCheckServicesProvidersSection = () => {
   // Define the initial state based on the provided object

@@ -13,8 +13,6 @@ import { Toaster, toast } from "react-hot-toast";
 import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
 
-// import "../styles/EditAboutShopSatelliteTVSection.css"; // You can create this CSS file
-
 const EditAboutShopSatelliteTVSection = () => {
   // Define the initial state based on the provided object
   const [formData, setFormData] = useState({

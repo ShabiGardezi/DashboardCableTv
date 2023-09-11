@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TextField,
-  Button,
   Rating,
   Typography,
-  InputLabel,
-  Select,
   MenuItem,
   Box,
   Container,
@@ -20,77 +17,26 @@ function ProviderForm() {
   const [providerName, setProviderName] = useState("");
   const [zipcodes, setzipcodes] = useState("");
   const [MaxDownloadSpeedsUpTo, setMaxDownloadSpeedsUpTo] = useState("");
-  const [Features, setFeatures] = useState("");
+  const [Features, setFeatures] = useState([]);
   const [Price, setPrice] = useState("");
   const [rating, setRating] = useState(null);
   const [Channels, setChannels] = useState("");
   const [loading, setloading] = useState(false);
+  const [companyNames, setCompanyNames] = useState([]);
+  
+  useEffect(() => {
+    // Fetch company names when the component mounts
+    async function fetchCompanyNames() {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/companyNames`);
+        setCompanyNames(response.data);
+      } catch (error) {
+        console.error("Error fetching company names:", error);
+      }
+    }
 
-  const companies = [
-    "FeaturesAT&T Internet + TV",
-    "AT&T Internet",
-    "Astound Broadband Powered by RCN Cable",
-    "Astound Broadband Powered by Wave Cable",
-    "Astound Broadband Powered by Wave TV + Internet",
-    "Astound Broadband powered by Grande TV",
-    "Buckeye Broadband Bundles",
-    "Buckeye Broadband",
-    "Cox",
-    "DIRECTV + AT&T Internet",
-    "DIRECTV STREAM",
-    "DISH TV + Frontier Internet",
-    "DISH TV + Windstream High-Speed Internet",
-    "Directv",
-    "DishTV",
-    "Fidelity Communications",
-    "Frontier",
-    "Google Fiber",
-    "Grande TV + Internet",
-    "HughesNet",
-    "Mediacom Cable TV & Internet",
-    "Mediacom Cable",
-    "Optimum Cable TV & Internet",
-    "Optimum TV",
-    "Sparklight TV",
-    "Spectrum Cable",
-    "Suddenlink TV + Internet",
-    "Suddenlink TV",
-    "Verizon",
-    "Viasat Satellite Internet",
-    "WOW! TV",
-    "WOW!TV+Internet",
-    "Xfinity TV from Comcast",
-    "Armstrong",
-    "Astound Broadband Powered by RCN Cable TV & Internet",
-    "Astound Broadband Powered by RCN Internet",
-    "Astound Broadband Powered by Wave Internet",
-    "Atlantic Broadband",
-    "Buckeye Broadband",
-    "CenturyLink High-Speed Internet",
-    "Cox Cable TV & Internet",
-    "Cox",
-    "Earthlink",
-    "Fidelity Communications",
-    "Frontier",
-    "Google Fiber Internet",
-    "Grande Internet",
-    "Mediacom Cable Internet",
-    "Optimum Internet",
-    "Rise Broadband",
-    "Sparklight TV & Internet",
-    "Sparklight TV",
-    "Spectrum Cable Internet",
-    "Spectrum Cable TV & Internet",
-    "Suddenlink Internet",
-    "Verizon Bundles",
-    "Verizon",
-    "WOW!Internet",
-    "Windstream High-Speed Internet",
-    "Xfinity Cable TV & Internet from Comcast",
-    "Xfinity Internet from Comcast",
-    "Ziply Fiber",
-  ];
-
+    fetchCompanyNames();
+  }, []);
   const handleRatingChange = (_event, newValue) => {
     setRating(newValue);
   };
@@ -128,20 +74,6 @@ function ProviderForm() {
         <Container maxWidth="sm">
           <h2 className="heading-1">Update Provider</h2>
           <form onSubmit={handleSubmit}>
-            {/* <InputLabel>Provider Name</InputLabel>
-            <Select
-            value={providerName}
-            onChange={(e) => setProviderName(e.target.value)}
-            >
-                <MenuItem value="" disabled>
-                Choose Provider
-                </MenuItem>
-                {companies.map((company, index) => (
-                    <MenuItem key={index} value={company}>
-                    {company}
-                    </MenuItem>
-                    ))}
-            </Select> */}
             <TextField
               select
               label="Provider Name"
@@ -149,7 +81,7 @@ function ProviderForm() {
               onChange={(e) => setProviderName(e.target.value)}
               fullWidth
             >
-              {companies.map((company, index) => (
+              {companyNames.map((company, index) => (
                 <MenuItem key={index} value={company}>
                   {company}
                 </MenuItem>

@@ -13,6 +13,7 @@ import { Toaster, toast } from "react-hot-toast";
 import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
 import axios from "axios";
+
 const EditContentCableInternet = () => {
   const [loading, setloading] = useState(false);
 

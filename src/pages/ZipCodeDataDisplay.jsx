@@ -19,7 +19,8 @@ function ProviderForm() {
   const [providerName, setProviderName] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [maxSpeed, setMaxSpeed] = useState("");
-  const [features, setFeatures] = useState("");
+  const [features, setFeatures] = useState([]);
+  const [featureInput, setFeatureInput] = useState(""); // Input for adding features
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState(null);
   const [channel, setChannel] = useState("");
@@ -34,11 +35,14 @@ function ProviderForm() {
     event.preventDefault();
     try {
       setloading(true);
+      const parsedFeatures = featureInput
+        .split("\n")
+        .map((feature) => feature.trim());
       const res = await axios.post(`http://localhost:5000/api/add-provider`, {
         CompanyName: providerName,
         zipcodes: [zipCode],
         MaxDownloadSpeedsUpTo: maxSpeed,
-        Features: features,
+        Features: parsedFeatures, // Send all features as an array
         Price: price,
         rating: rating,
         Channels: channel,
@@ -94,12 +98,14 @@ function ProviderForm() {
             onChange={(e) => setChannel(e.target.value)}
           />
           <TextField
-            label="Features"
+            label="Features (Enter each feature on a new line)"
             fullWidth
             variant="outlined"
             margin="normal"
-            value={features}
-            onChange={(e) => setFeatures(e.target.value)}
+            multiline
+            rows={4}
+            value={featureInput}
+            onChange={(e) => setFeatureInput(e.target.value)}
           />
           <TextField
             label="Price"

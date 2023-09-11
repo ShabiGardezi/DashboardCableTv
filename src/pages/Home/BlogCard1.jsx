@@ -13,6 +13,7 @@ import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
+
 const BlogCard1 = () => {
   const [formData, setFormData] = useState({
     heading: "",
@@ -107,7 +108,6 @@ const BlogCard1 = () => {
                   margin="normal"
                   variant="outlined"
                   multiline={true}
-
                 />
                 <div className="uploadimg">
                   <label>Upload Image:</label>

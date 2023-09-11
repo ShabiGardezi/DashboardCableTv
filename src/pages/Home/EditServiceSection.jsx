@@ -332,7 +332,6 @@ import HeaderCommon from "../HeaderCommon";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import { LoadingButton } from "@mui/lab";
-// import "../../styles/EditServiceSection.css"; // You can create this CSS file
 
 const EditServiceSection = () => {
   const [formData, setFormData] = useState({

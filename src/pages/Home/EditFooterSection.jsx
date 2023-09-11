@@ -12,6 +12,7 @@ import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
+
 const EditFooterSection = () => {
   const [loading, setloading] = useState(false);
 

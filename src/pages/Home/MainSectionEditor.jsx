@@ -13,6 +13,7 @@ import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
+
 const MainSectionEditor = () => {
   const [formData, setFormData] = useState({
     title: "",
