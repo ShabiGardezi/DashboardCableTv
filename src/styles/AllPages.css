@@ -16,21 +16,19 @@ h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.MuiTypography-g
   width: 500px;
 }
 .accordion-item {
+  margin-top: 30px;
   margin-bottom: 50px;
 }
 .MuiContainer-root.MuiContainer-maxWidthXs.css-nzinn5-MuiContainer-root {
   margin-top: 50px;
 }
 .col-8 {
-  /* width: 100%; */
+  flex: 0 0 auto;
+  width: -webkit-fill-available;
   margin-right: 20px;
 }
 div#accordionExample {
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-.col-8 {
-  flex: 0 0 auto;
-  width: 400px;
+  /* align-items: center;  */
 }
