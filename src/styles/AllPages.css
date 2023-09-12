@@ -24,7 +24,7 @@ h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.MuiTypography-g
 }
 .col-8 {
   flex: 0 0 auto;
-  width: -webkit-fill-available;
+  width: -webkit-fill-available !important;
   margin-right: 20px;
 }
 div#accordionExample {
