@@ -22,11 +22,15 @@ h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.MuiTypography-g
   margin-top: 50px;
 }
 .col-8 {
-  width: 100%;
+  /* width: 100%; */
   margin-right: 20px;
 }
 div#accordionExample {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.col-8 {
+  flex: 0 0 auto;
+  width: 400px;
 }

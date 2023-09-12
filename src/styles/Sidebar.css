@@ -90,3 +90,12 @@
 .MuiListItem-root.active .MuiTypography-root {
   color: #ffffff; /* Change this to the desired active text color */
 }
+span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-yb0lig {
+  color: black;
+}
+.css-1ontqvh {
+  margin-top: 25px;
+}
+.MuiButtonBase-root.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.MuiListItem-button.css-qs2q9j {
+  margin-top: 47px;
+}
