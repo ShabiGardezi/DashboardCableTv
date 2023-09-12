@@ -16,6 +16,7 @@ import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 
 const EditBlogSection = () => {
+  const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     title: "",
     heading: "",
@@ -42,7 +43,7 @@ const EditBlogSection = () => {
     try {
       setloading(true);
 
-      await axios.post(`http://localhost:5000/api/update/website`, {
+      await axios.post(`${url}api/update/website`, {
         mongoObj: {
           title: data.title,
           heading: data.heading,

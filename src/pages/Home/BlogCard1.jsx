@@ -15,6 +15,7 @@ import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
 
 const BlogCard1 = () => {
+  const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     heading: "",
     description: "",
@@ -56,7 +57,7 @@ const BlogCard1 = () => {
           image: "",
         });
       }
-      await axios.post(`http://localhost:5000/api/update/website`, {
+      await axios.post(`${url}api/update/website`, {
         mongoObj: {
           heading: data.heading,
           description: data.description,

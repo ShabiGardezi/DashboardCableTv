@@ -14,6 +14,7 @@ import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
 
 const EditFooterSection = () => {
+  const url = process.env.REACT_APP_API_URL;
   const [loading, setloading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -43,7 +44,7 @@ const EditFooterSection = () => {
           image: "",
         });
       }
-      await axios.post(`http://localhost:5000/api/update/website`, {
+      await axios.post(`${url}api/update/website`, {
         mongoObj: {
           footer_text: data.footer_text,
         },

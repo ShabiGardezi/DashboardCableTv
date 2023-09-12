@@ -14,6 +14,7 @@ import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
 
 const EditAboutShopSatelliteTVSection = () => {
+  const url = process.env.REACT_APP_API_URL;
   // Define the initial state based on the provided object
   const [formData, setFormData] = useState({
     title: "",
@@ -56,7 +57,7 @@ const EditAboutShopSatelliteTVSection = () => {
           image: "",
         });
       }
-      await axios.post(`http://localhost:5000/api/update/website`, {
+      await axios.post(`${url}api/update/website`, {
         mongoObj: {
           title: data.title,
           heading: data.heading,

@@ -13,6 +13,7 @@ import { LoadingButton } from "@mui/lab";
 import axios from "axios";
 
 const EditHeroCommonAbout = () => {
+  const url = process.env.REACT_APP_API_URL;
   const [loading, setloading] = useState(false);
   const [formData, setFormData] = useState({
     heading: "",
@@ -36,7 +37,7 @@ const EditHeroCommonAbout = () => {
     try {
       setloading(true);
 
-      await axios.post(`http://localhost:5000/api/update/website`, {
+      await axios.post(`${url}api/update/website`, {
         mongoObj: {
           heading: data.heading,
           description: data.description,

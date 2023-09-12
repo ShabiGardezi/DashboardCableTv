@@ -16,7 +16,7 @@ import axios from "axios";
 
 const EditHeroCommonCableInternet = () => {
   const [loading, setloading] = useState(false);
-
+  const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     heading: "",
     description: "",
@@ -47,7 +47,7 @@ const EditHeroCommonCableInternet = () => {
           image: "",
         });
       }
-      await axios.post(`http://localhost:5000/api/update/website`, {
+      await axios.post(`${url}api/update/website`, {
         mongoObj: {
           heading: data.heading,
           description: data.description,

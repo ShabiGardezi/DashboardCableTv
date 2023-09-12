@@ -15,6 +15,7 @@ import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
 
 const MainSectionEditor = () => {
+  const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     title: "",
     subtitle: "",
@@ -44,7 +45,6 @@ const MainSectionEditor = () => {
       image: e.target.files[0],
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -58,7 +58,10 @@ const MainSectionEditor = () => {
           image: "",
         });
       }
-      await axios.post(`http://localhost:5000/api/update/website`, {
+
+      console.log("apiUrl:", url); // Add this line
+
+      await axios.post(`${url}api/update/website`, {
         mongoObj: {
           title: data.title,
           subtitle: data.subtitle,
@@ -72,7 +75,6 @@ const MainSectionEditor = () => {
           image: imageUrl,
         },
       });
-
       toast.success("successfully uploaded");
     } catch (error) {
       if (typeof error === "object") toast.error(error.message);

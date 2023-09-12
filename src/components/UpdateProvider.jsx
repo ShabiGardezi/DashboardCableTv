@@ -23,12 +23,13 @@ function ProviderForm() {
   const [Channels, setChannels] = useState("");
   const [loading, setloading] = useState(false);
   const [companyNames, setCompanyNames] = useState([]);
-  
+  const url = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     // Fetch company names when the component mounts
     async function fetchCompanyNames() {
       try {
-        const response = await axios.get(`http://localhost:5000/api/companyNames`);
+        const response = await axios.get(`${url}api/companyNames`);
         setCompanyNames(response.data);
       } catch (error) {
         console.error("Error fetching company names:", error);
@@ -46,7 +47,7 @@ function ProviderForm() {
     try {
       setloading(true);
       const response = await axios.post(
-        `http://localhost:5000/api/update/provider?companyName=${providerName}`,
+        `${url}api/update/provider?companyName=${providerName}`,
         {
           zipcodes: zipcodes || null,
           MaxDownloadSpeedsUpTo: MaxDownloadSpeedsUpTo || null,

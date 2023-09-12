@@ -8,6 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { LoadingButton } from "@mui/lab";
 
 function Login({ setIsLoggedIn }) {
+  const url = process.env.REACT_APP_API_URL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -19,7 +20,7 @@ function Login({ setIsLoggedIn }) {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
+      const response = await axios.post(`${url}api/login`, {
         email: email,
         password: password,
       });

@@ -26,6 +26,7 @@ function ProviderForm() {
   const [channel, setChannel] = useState("");
   const [category, setCategory] = useState("");
   const [loading, setloading] = useState(false);
+  const url = process.env.REACT_APP_API_URL;
 
   const handleRatingChange = (_event, newValue) => {
     setRating(newValue);
@@ -38,7 +39,7 @@ function ProviderForm() {
       const parsedFeatures = featureInput
         .split("\n")
         .map((feature) => feature.trim());
-      const res = await axios.post(`http://localhost:5000/api/add-provider`, {
+      const res = await axios.post(`${url}api/add-provider`, {
         CompanyName: providerName,
         zipcodes: [zipCode],
         MaxDownloadSpeedsUpTo: maxSpeed,

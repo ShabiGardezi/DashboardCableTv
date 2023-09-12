@@ -16,7 +16,7 @@ import axios from "axios";
 
 const EditContentCableInternet = () => {
   const [loading, setloading] = useState(false);
-
+  const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     title: "",
     heading: "",
@@ -51,7 +51,7 @@ const EditContentCableInternet = () => {
           image: "",
         });
       }
-      await axios.post(`http://localhost:5000/api/update/website`, {
+      await axios.post(`${url}api/update/website`, {
         mongoObj: {
           title: data.title,
           heading: data.heading,

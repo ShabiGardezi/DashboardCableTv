@@ -15,6 +15,7 @@ import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
 
 const SliderCableInternet = () => {
+  const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -56,7 +57,7 @@ const SliderCableInternet = () => {
           image: "",
         });
       }
-      await axios.post(`http://localhost:5000/api/update/website`, {
+      await axios.post(`${url}api/update/website`, {
         mongoObj: {
           title: data.title,
           description: data.description,

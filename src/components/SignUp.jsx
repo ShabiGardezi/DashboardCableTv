@@ -4,6 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { LoadingButton } from "@mui/lab";
 import axios from "axios";
 const SignUp = () => {
+  const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -25,7 +26,7 @@ const SignUp = () => {
       setloading(true);
       const { username, email, password, role } = formData;
       const userData = { username, email, password, role };
-      const response = await axios.post("http://localhost:5000/api/signup", {
+      const response = await axios.post("${url}api/signup", {
         ...userData,
       });
 

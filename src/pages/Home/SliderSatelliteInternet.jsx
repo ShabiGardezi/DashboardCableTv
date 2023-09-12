@@ -14,6 +14,7 @@ import axios from "axios";
 import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
 const SliderSatelliteInternet = () => {
+  const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -55,7 +56,7 @@ const SliderSatelliteInternet = () => {
           image: "",
         });
       }
-      await axios.post(`http://localhost:5000/api/update/website`, {
+      await axios.post(`${url}api/update/website`, {
         mongoObj: {
           title: data.title,
           description: data.description,
