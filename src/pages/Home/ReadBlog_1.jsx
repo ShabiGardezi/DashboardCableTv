@@ -5,19 +5,20 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
-import "../../styles/MainSectionEditor.css";
-import "../../styles/EditBlogSection.css";
+import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
-import { toast, Toaster } from "react-hot-toast";
+import uploadImage from "../../utiles/imageUpload";
+import { LoadingButton } from "@mui/lab";
 
-const EditBlogSection = () => {
+const FullBlog_1 = () => {
   const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
-    title: "",
     heading: "",
     description: "",
+    image: "",
   });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,28 +28,37 @@ const EditBlogSection = () => {
     });
   };
 
-  //STATE FOR BLOG SECTION
   const [data, setData] = useState({
-    title: "Home.blogs.title",
-    heading: "Home.blogs.heading",
-    description: "Home.blogs.description",
+    description: "fullblog_1.description",
   });
   const [loading, setloading] = useState(false);
+
+  const handleImageUpload = (e) => {
+    // Handle image upload here and set it in formData
+    setFormData({
+      ...formData,
+      image: e.target.files[0],
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setloading(true);
+      let imageUrl = "";
+      if (formData.image) {
+        imageUrl = await uploadImage(formData.image);
 
+        setFormData({
+          ...formData,
+          image: "",
+        });
+      }
       await axios.post(`${url}api/update/website`, {
         mongoObj: {
-          title: data.title,
-          heading: data.heading,
           description: data.description,
         },
         data: {
-          title: formData.title,
-          heading: formData.heading,
           description: formData.description,
         },
       });
@@ -61,57 +71,29 @@ const EditBlogSection = () => {
     }
     setloading(false);
   };
+
   return (
     <>
       <Toaster />
       <VerticalNavbar />
-      <HeaderCommon title="Edit Home Page Blog Section" />
+      <HeaderCommon title="Edit Blog => Full Blog 1" />
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}></Grid>
           <Grid item xs={12} md={9}>
             <Paper elevation={3} style={{ padding: "20px" }}>
-              <Typography variant="h6">Edit Blog Section</Typography>
+              <Typography variant="h6">Edit Full Blog 1</Typography>
               <form onSubmit={handleSubmit}>
-                <TextField
-                  fullWidth
-                  label="Title"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleInputChange}
-                  margin="normal"
-                  variant="outlined"
-                />
-                <TextField
-                  fullWidth
-                  label="Heading"
-                  name="heading"
-                  value={formData.heading}
-                  onChange={handleInputChange}
-                  margin="normal"
-                  variant="outlined"
-                />
                 <TextField
                   fullWidth
                   label="Description"
                   name="description"
-                  value={formData.description}
+                  value={formData.subtitle}
                   onChange={handleInputChange}
                   margin="normal"
                   variant="outlined"
-                  multiline // This enables multiline input
+                  multiline={true}
                 />
-
-                <div className="updatebtn">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    style={{ marginTop: "10px" }}
-                  >
-                    Update
-                  </Button>
-                </div>
               </form>
             </Paper>
           </Grid>
@@ -121,4 +103,4 @@ const EditBlogSection = () => {
   );
 };
 
-export default EditBlogSection;
+export default FullBlog_1;

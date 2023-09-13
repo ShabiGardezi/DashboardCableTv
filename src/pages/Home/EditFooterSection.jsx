@@ -35,15 +35,6 @@ const EditFooterSection = () => {
     e.preventDefault();
     try {
       setloading(true);
-      let imageUrl = "";
-      if (formData.image) {
-        imageUrl = await uploadImage(formData.image);
-
-        setFormData({
-          ...formData,
-          image: "",
-        });
-      }
       await axios.post(`${url}api/update/website`, {
         mongoObj: {
           footer_text: data.footer_text,

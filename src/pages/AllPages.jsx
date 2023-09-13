@@ -50,6 +50,14 @@ const AllPages = () => {
                   </Link>
                 </li>
                 <li>
+                  <span>Full Blog 1</span>
+                  <Link to="fullblog_1">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
+                </li>
+                <li>
                   <span>Services</span>
                   <Link to="service_section">
                     <button className="btn btn-secondary btn-sm ms-2">
