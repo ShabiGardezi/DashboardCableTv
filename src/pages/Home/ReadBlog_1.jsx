@@ -16,9 +16,7 @@ import { LoadingButton } from "@mui/lab";
 const FullBlog_1 = () => {
   const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
-    heading: "",
     description: "",
-    image: "",
   });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,27 +31,10 @@ const FullBlog_1 = () => {
   });
   const [loading, setloading] = useState(false);
 
-  const handleImageUpload = (e) => {
-    // Handle image upload here and set it in formData
-    setFormData({
-      ...formData,
-      image: e.target.files[0],
-    });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setloading(true);
-      let imageUrl = "";
-      if (formData.image) {
-        imageUrl = await uploadImage(formData.image);
-
-        setFormData({
-          ...formData,
-          image: "",
-        });
-      }
       await axios.post(`${url}api/update/website`, {
         mongoObj: {
           description: data.description,
@@ -88,12 +69,24 @@ const FullBlog_1 = () => {
                   fullWidth
                   label="Description"
                   name="description"
-                  value={formData.subtitle}
+                  value={formData.description}
                   onChange={handleInputChange}
                   margin="normal"
                   variant="outlined"
                   multiline={true}
                 />
+
+                <div className="updatebtn">
+                  <LoadingButton
+                    loading={loading}
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    style={{ marginTop: "10px" }}
+                  >
+                    Update
+                  </LoadingButton>
+                </div>
               </form>
             </Paper>
           </Grid>
