@@ -4,17 +4,15 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import VerticalNavbar from "../../components/Sidebar";
 import HeaderCommon from "../HeaderCommon";
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
-import uploadImage from "../../utiles/imageUpload";
 import { LoadingButton } from "@mui/lab";
 
 const FullBlog_1 = () => {
   const url = process.env.REACT_APP_API_URL;
+  const [loading, setloading] = useState(false);
   const [formData, setFormData] = useState({
     description: "",
   });
@@ -27,9 +25,8 @@ const FullBlog_1 = () => {
   };
 
   const [data, setData] = useState({
-    description: "fullblog_1.description",
+    description: "FullBlog_1.description",
   });
-  const [loading, setloading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

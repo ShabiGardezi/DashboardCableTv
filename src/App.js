@@ -38,7 +38,9 @@ import BlogCard1 from "./pages/Home/BlogCard1";
 import BlogCard2 from "./pages/Home/BlogCard2";
 import BlogCard3 from "./pages/Home/BlogCard3";
 import EditContact_Content_Section from "./pages/ContactUs/EditContact_Content_Section";
-import ReadBlog_1 from "./pages/Home/ReadBlog_1";
+import FullBlog_2 from "./pages/Home/ReadBlog_2";
+import FullBlog_3 from "./pages/Home/ReadBlog";
+import FullBlog_1 from "./pages/Home/ReadBlog_1";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -99,7 +101,9 @@ function App() {
         <Route path="/pages/blog_card1" exact Component={BlogCard1} />
         <Route path="/pages/blog_card2" exact Component={BlogCard2} />
         <Route path="/pages/blog_card3" exact Component={BlogCard3} />
-        <Route path="/pages/fullblog_1" exact Component={ReadBlog_1} />
+        <Route path="/pages/fullblog_1" exact Component={FullBlog_1} />
+        <Route path="/pages/fullblog_2" exact Component={FullBlog_2} />
+        <Route path="/pages/fullblog_3" exact Component={FullBlog_3} />
         <Route
           path="/pages/aboutshopsatellite_section"
           exact

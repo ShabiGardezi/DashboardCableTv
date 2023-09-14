@@ -58,6 +58,22 @@ const AllPages = () => {
                   </Link>
                 </li>
                 <li>
+                  <span>Full Blog 2</span>
+                  <Link to="fullblog_2">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
+                </li>{" "}
+                <li>
+                  <span>Full Blog 3</span>
+                  <Link to="fullblog_3">
+                    <button className="btn btn-secondary btn-sm ms-2">
+                      Edit
+                    </button>
+                  </Link>
+                </li>
+                <li>
                   <span>Services</span>
                   <Link to="service_section">
                     <button className="btn btn-secondary btn-sm ms-2">
