@@ -116,15 +116,6 @@ function VerticalNavbar() {
             <ListItemText primary="Logout" />
           </ListItem>
         </List>
-        {/* <div className="UserWidget">
-          <div className="leftside">
-            <img src={Avatar} alt="Avater" />
-          </div>
-          <div className="rightside">
-            <h3>Haseeb Irfan</h3>
-            <h4>Admin</h4>
-          </div>
-        </div> */}
       </Drawer>
     </div>
   );
